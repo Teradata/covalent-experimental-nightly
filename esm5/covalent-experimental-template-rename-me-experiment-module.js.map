@@ -1,0 +1,14 @@
+{
+  "version": 3,
+  "file": "covalent-experimental-template-rename-me-experiment-module.js",
+  "sources": [
+    "ng://@covalent/experimental/template-rename-me-experiment-module/out/rename-me.module.ts",
+    "ng://@covalent/experimental/template-rename-me-experiment-module/out/rename-me.component.ts"
+  ],
+  "sourcesContent": [
+    "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { TdRenameMeComponent } from './rename-me.component';\n\n@NgModule({\n  imports: [\n    CommonModule,\n  ],\n  declarations: [\n    TdRenameMeComponent,\n  ],\n  exports: [\n    TdRenameMeComponent,\n  ],\n})\nexport class CovalentRenameMeModule {\n\n}\n",
+    "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'td-renameMe',\n  styles: [``],\n  template: `<a href=\"https://github.com/Teradata/covalent\"> Test Link </a>\n`,\n})\nexport class TdRenameMeComponent {\n\n  constructor() {\n    // stub\n  }\n\n}\n"
+  ],
+  "names": [],
+  "mappings": ";;;ACAA;IAUE;KAEC;;;;IAVH,EAAA,IAAA,EAAC,SAAS,EAAV,IAAA,EAAA,CAAW;gBACT,QAAQ,EAAE,aAAa;gBACvB,MAAM,EAAE,CAAC,EAAE,CAAC;gBACZ,QAAQ,EAAE,oEACX;aACA,EAAD,EAAA;;;ADPA;IAAA;;;;;IAKA,EAAA,IAAA,EAAC,QAAQ,EAAT,IAAA,EAAA,CAAU;gBACR,OAAO,EAAE;oBACP,YAAY;iBACb;gBACD,YAAY,EAAE;oBACZ,mBAAmB;iBACpB;gBACD,OAAO,EAAE;oBACP,mBAAmB;iBACpB;aACF,EAAD,EAAA;;;;;;"
+}
