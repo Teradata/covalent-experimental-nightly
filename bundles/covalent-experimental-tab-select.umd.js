@@ -1,43 +1,34 @@
-import { __extends } from 'tslib';
-import { Component, NgModule, Input, ChangeDetectionStrategy, ChangeDetectorRef, ViewChild, TemplateRef, ViewContainerRef, ContentChildren, forwardRef, Output, EventEmitter } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { TemplatePortal, PortalModule } from '@angular/cdk/portal';
-import { mixinDisabled, mixinControlValueAccessor, mixinDisableRipple } from '@covalent/core/common';
-import { NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
-import { MatTabsModule } from '@angular/material/tabs';
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/cdk/portal'), require('@covalent/core/common'), require('@angular/forms'), require('@angular/common'), require('@angular/material/tabs')) :
+	typeof define === 'function' && define.amd ? define('@covalent/experimental/tab-select', ['exports', '@angular/core', '@angular/cdk/portal', '@covalent/core/common', '@angular/forms', '@angular/common', '@angular/material/tabs'], factory) :
+	(factory((global.covalent = global.covalent || {}, global.covalent.experimental = global.covalent.experimental || {}, global.covalent.experimental['tab-select'] = {}),global.ng.core,global.ng.cdk.portal,global.common,global.ng.forms,global.ng.common,global.ng.material.tabs));
+}(this, (function (exports,core,portal,common,forms,common$1,tabs) { 'use strict';
 
-var TdRenameMeComponent = /** @class */ (function () {
-    function TdRenameMeComponent() {
-    }
-    return TdRenameMeComponent;
-}());
-TdRenameMeComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'td-renameMe',
-                styles: [""],
-                template: "<a href=\"https://github.com/Teradata/covalent\"> Test Link </a>\n",
-            },] },
-];
-TdRenameMeComponent.ctorParameters = function () { return []; };
-var CovalentRenameMeModule = /** @class */ (function () {
-    function CovalentRenameMeModule() {
-    }
-    return CovalentRenameMeModule;
-}());
-CovalentRenameMeModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [
-                    CommonModule,
-                ],
-                declarations: [
-                    TdRenameMeComponent,
-                ],
-                exports: [
-                    TdRenameMeComponent,
-                ],
-            },] },
-];
-CovalentRenameMeModule.ctorParameters = function () { return []; };
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation. All rights reserved.
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this file except in compliance with the License. You may obtain a copy of the
+License at http://www.apache.org/licenses/LICENSE-2.0
+THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
+WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
+MERCHANTABLITY OR NON-INFRINGEMENT.
+See the Apache Version 2.0 License for specific language governing permissions
+and limitations under the License.
+***************************************************************************** */
+/* global Reflect, Promise */
+var extendStatics = function(d, b) {
+    extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return extendStatics(d, b);
+};
+function __extends(d, b) {
+    extendStatics(d, b);
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+}
+
 var TdTabOptionBase = /** @class */ (function () {
     function TdTabOptionBase(_viewContainerRef, _changeDetectorRef) {
         this._viewContainerRef = _viewContainerRef;
@@ -45,7 +36,7 @@ var TdTabOptionBase = /** @class */ (function () {
     }
     return TdTabOptionBase;
 }());
-var _TdTabOptionMixinBase = mixinDisabled(TdTabOptionBase);
+var _TdTabOptionMixinBase = common.mixinDisabled(TdTabOptionBase);
 var TdTabOptionComponent = /** @class */ (function (_super) {
     __extends(TdTabOptionComponent, _super);
     function TdTabOptionComponent(_viewContainerRef, _changeDetectorRef) {
@@ -59,26 +50,26 @@ var TdTabOptionComponent = /** @class */ (function (_super) {
         configurable: true
     });
     TdTabOptionComponent.prototype.ngOnInit = function () {
-        this._contentPortal = new TemplatePortal(this._content, this._viewContainerRef);
+        this._contentPortal = new portal.TemplatePortal(this._content, this._viewContainerRef);
     };
     return TdTabOptionComponent;
 }(_TdTabOptionMixinBase));
 TdTabOptionComponent.decorators = [
-    { type: Component, args: [{
+    { type: core.Component, args: [{
                 selector: 'td-tab-option',
                 template: "<ng-template>\n  <ng-content></ng-content>\n</ng-template>\n",
                 styles: [""],
-                changeDetection: ChangeDetectionStrategy.OnPush,
+                changeDetection: core.ChangeDetectionStrategy.OnPush,
                 inputs: ['disabled'],
             },] },
 ];
 TdTabOptionComponent.ctorParameters = function () { return [
-    { type: ViewContainerRef, },
-    { type: ChangeDetectorRef, },
+    { type: core.ViewContainerRef, },
+    { type: core.ChangeDetectorRef, },
 ]; };
 TdTabOptionComponent.propDecorators = {
-    "_content": [{ type: ViewChild, args: [TemplateRef,] },],
-    "value": [{ type: Input, args: ['value',] },],
+    "_content": [{ type: core.ViewChild, args: [core.TemplateRef,] },],
+    "value": [{ type: core.Input, args: ['value',] },],
 };
 var TdTabSelectBase = /** @class */ (function () {
     function TdTabSelectBase(_changeDetectorRef) {
@@ -86,7 +77,7 @@ var TdTabSelectBase = /** @class */ (function () {
     }
     return TdTabSelectBase;
 }());
-var _TdTabSelectMixinBase = mixinControlValueAccessor(mixinDisabled(mixinDisableRipple(TdTabSelectBase)));
+var _TdTabSelectMixinBase = common.mixinControlValueAccessor(common.mixinDisabled(common.mixinDisableRipple(TdTabSelectBase)));
 var TdTabSelectComponent = /** @class */ (function (_super) {
     __extends(TdTabSelectComponent, _super);
     function TdTabSelectComponent(_changeDetectorRef) {
@@ -94,7 +85,7 @@ var TdTabSelectComponent = /** @class */ (function (_super) {
         _this._subs = [];
         _this._values = [];
         _this._selectedIndex = 0;
-        _this.valueChange = new EventEmitter();
+        _this.valueChange = new core.EventEmitter();
         return _this;
     }
     Object.defineProperty(TdTabSelectComponent.prototype, "selectedIndex", {
@@ -160,11 +151,11 @@ var TdTabSelectComponent = /** @class */ (function (_super) {
     return TdTabSelectComponent;
 }(_TdTabSelectMixinBase));
 TdTabSelectComponent.decorators = [
-    { type: Component, args: [{
-                changeDetection: ChangeDetectionStrategy.OnPush,
+    { type: core.Component, args: [{
+                changeDetection: core.ChangeDetectionStrategy.OnPush,
                 providers: [{
-                        provide: NG_VALUE_ACCESSOR,
-                        useExisting: forwardRef(function () { return TdTabSelectComponent; }),
+                        provide: forms.NG_VALUE_ACCESSOR,
+                        useExisting: core.forwardRef(function () { return TdTabSelectComponent; }),
                         multi: true,
                     }],
                 selector: 'td-tab-select',
@@ -174,13 +165,13 @@ TdTabSelectComponent.decorators = [
             },] },
 ];
 TdTabSelectComponent.ctorParameters = function () { return [
-    { type: ChangeDetectorRef, },
+    { type: core.ChangeDetectorRef, },
 ]; };
 TdTabSelectComponent.propDecorators = {
-    "_tabOptions": [{ type: ContentChildren, args: [TdTabOptionComponent,] },],
-    "color": [{ type: Input, args: ['color',] },],
-    "backgroundColor": [{ type: Input, args: ['backgroundColor',] },],
-    "valueChange": [{ type: Output },],
+    "_tabOptions": [{ type: core.ContentChildren, args: [TdTabOptionComponent,] },],
+    "color": [{ type: core.Input, args: ['color',] },],
+    "backgroundColor": [{ type: core.Input, args: ['backgroundColor',] },],
+    "valueChange": [{ type: core.Output },],
 };
 var CovalentTabSelectModule = /** @class */ (function () {
     function CovalentTabSelectModule() {
@@ -188,16 +179,16 @@ var CovalentTabSelectModule = /** @class */ (function () {
     return CovalentTabSelectModule;
 }());
 CovalentTabSelectModule.decorators = [
-    { type: NgModule, args: [{
+    { type: core.NgModule, args: [{
                 declarations: [
                     TdTabSelectComponent,
                     TdTabOptionComponent,
                 ],
                 imports: [
-                    CommonModule,
-                    FormsModule,
-                    PortalModule,
-                    MatTabsModule,
+                    common$1.CommonModule,
+                    forms.FormsModule,
+                    portal.PortalModule,
+                    tabs.MatTabsModule,
                 ],
                 exports: [
                     TdTabSelectComponent,
@@ -207,5 +198,15 @@ CovalentTabSelectModule.decorators = [
 ];
 CovalentTabSelectModule.ctorParameters = function () { return []; };
 
-export { CovalentRenameMeModule, TdRenameMeComponent, CovalentTabSelectModule, TdTabSelectBase, _TdTabSelectMixinBase, TdTabSelectComponent, TdTabOptionBase, _TdTabOptionMixinBase, TdTabOptionComponent };
-//# sourceMappingURL=covalent-experimental.js.map
+exports.CovalentTabSelectModule = CovalentTabSelectModule;
+exports.TdTabSelectBase = TdTabSelectBase;
+exports._TdTabSelectMixinBase = _TdTabSelectMixinBase;
+exports.TdTabSelectComponent = TdTabSelectComponent;
+exports.TdTabOptionBase = TdTabOptionBase;
+exports._TdTabOptionMixinBase = _TdTabOptionMixinBase;
+exports.TdTabOptionComponent = TdTabOptionComponent;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
+//# sourceMappingURL=covalent-experimental-tab-select.umd.js.map

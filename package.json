@@ -13,6 +13,12 @@
     "Jenn Medellin <jennifer.medellin@teradata.com>",
     "Julie Knowles <julie.knowles@teradata.com>"
   ],
+  "peerDependencies": {
+    "@angular/common": "^6.0.0",
+    "@angular/core": "^6.0.0",
+    "@angular/cdk": "^6.0.0",
+    "@angular/material": "^6.0.0"
+  },
   "main": "bundles/covalent-experimental.umd.js",
   "module": "esm5/covalent-experimental.js",
   "es2015": "esm2015/covalent-experimental.js",

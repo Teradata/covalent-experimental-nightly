@@ -1,43 +1,11 @@
 import { __extends } from 'tslib';
-import { Component, NgModule, Input, ChangeDetectionStrategy, ChangeDetectorRef, ViewChild, TemplateRef, ViewContainerRef, ContentChildren, forwardRef, Output, EventEmitter } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef, ViewChild, TemplateRef, ViewContainerRef, ContentChildren, forwardRef, Output, EventEmitter, NgModule } from '@angular/core';
 import { TemplatePortal, PortalModule } from '@angular/cdk/portal';
 import { mixinDisabled, mixinControlValueAccessor, mixinDisableRipple } from '@covalent/core/common';
 import { NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { MatTabsModule } from '@angular/material/tabs';
 
-var TdRenameMeComponent = /** @class */ (function () {
-    function TdRenameMeComponent() {
-    }
-    return TdRenameMeComponent;
-}());
-TdRenameMeComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'td-renameMe',
-                styles: [""],
-                template: "<a href=\"https://github.com/Teradata/covalent\"> Test Link </a>\n",
-            },] },
-];
-TdRenameMeComponent.ctorParameters = function () { return []; };
-var CovalentRenameMeModule = /** @class */ (function () {
-    function CovalentRenameMeModule() {
-    }
-    return CovalentRenameMeModule;
-}());
-CovalentRenameMeModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [
-                    CommonModule,
-                ],
-                declarations: [
-                    TdRenameMeComponent,
-                ],
-                exports: [
-                    TdRenameMeComponent,
-                ],
-            },] },
-];
-CovalentRenameMeModule.ctorParameters = function () { return []; };
 var TdTabOptionBase = /** @class */ (function () {
     function TdTabOptionBase(_viewContainerRef, _changeDetectorRef) {
         this._viewContainerRef = _viewContainerRef;
@@ -207,5 +175,5 @@ CovalentTabSelectModule.decorators = [
 ];
 CovalentTabSelectModule.ctorParameters = function () { return []; };
 
-export { CovalentRenameMeModule, TdRenameMeComponent, CovalentTabSelectModule, TdTabSelectBase, _TdTabSelectMixinBase, TdTabSelectComponent, TdTabOptionBase, _TdTabOptionMixinBase, TdTabOptionComponent };
-//# sourceMappingURL=covalent-experimental.js.map
+export { CovalentTabSelectModule, TdTabSelectBase, _TdTabSelectMixinBase, TdTabSelectComponent, TdTabOptionBase, _TdTabOptionMixinBase, TdTabOptionComponent };
+//# sourceMappingURL=covalent-experimental-tab-select.js.map

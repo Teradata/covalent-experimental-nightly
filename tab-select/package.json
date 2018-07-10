@@ -1,0 +1,11 @@
+{
+  "main": "../bundles/covalent-experimental-tab-select.umd.js",
+  "module": "../esm5/covalent-experimental-tab-select.js",
+  "es2015": "../esm2015/covalent-experimental-tab-select.js",
+  "typings": "covalent-experimental-tab-select.d.ts",
+  "metadata": "covalent-experimental-tab-select.metadata.json",
+  "dependencies": {
+    "tslib": "^1.9.0"
+  },
+  "name": "@covalent/experimental/tab-select"
+}
