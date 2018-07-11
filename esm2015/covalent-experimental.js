@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TemplatePortal, PortalModule } from '@angular/cdk/portal';
 import { mixinDisabled, mixinControlValueAccessor, mixinDisableRipple } from '@covalent/core/common';
 import { NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { MatTabsModule } from '@angular/material/tabs';
 
 /**
@@ -140,6 +141,7 @@ class TdTabSelectComponent extends _TdTabSelectMixinBase {
         this._subs = [];
         this._values = [];
         this._selectedIndex = 0;
+        this._stretchTabs = false;
         /**
          * Event that emits whenever the raw value of the select changes. This is here primarily
          * to facilitate the two-way binding for the `value` input.
@@ -157,6 +159,20 @@ class TdTabSelectComponent extends _TdTabSelectMixinBase {
      */
     get tabOptions() {
         return this._tabOptions ? this._tabOptions.toArray() : undefined;
+    }
+    /**
+     * Makes the tabs stretch to fit the parent container.
+     * @param {?} stretchTabs
+     * @return {?}
+     */
+    set stretchTabs(stretchTabs) {
+        this._stretchTabs = coerceBooleanProperty(stretchTabs);
+    }
+    /**
+     * @return {?}
+     */
+    get stretchTabs() {
+        return this._stretchTabs;
     }
     /**
      * @return {?}
@@ -240,7 +256,8 @@ TdTabSelectComponent.decorators = [
                         multi: true,
                     }],
                 selector: 'td-tab-select',
-                template: `<mat-tab-group [backgroundColor]="backgroundColor"
+                template: `<mat-tab-group [attr.mat-stretch-tabs]="stretchTabs ? true : undefined"
+                [backgroundColor]="backgroundColor"
                 [color]="color"
                 [disableRipple]="disableRipple"
                 [selectedIndex]="selectedIndex"
@@ -268,6 +285,7 @@ TdTabSelectComponent.ctorParameters = () => [
 ];
 TdTabSelectComponent.propDecorators = {
     "_tabOptions": [{ type: ContentChildren, args: [TdTabOptionComponent,] },],
+    "stretchTabs": [{ type: Input, args: ['stretchTabs',] },],
     "color": [{ type: Input, args: ['color',] },],
     "backgroundColor": [{ type: Input, args: ['backgroundColor',] },],
     "valueChange": [{ type: Output },],

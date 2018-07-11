@@ -1,8 +1,8 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/cdk/portal'), require('@covalent/core/common'), require('@angular/forms'), require('@angular/common'), require('@angular/material/tabs')) :
-	typeof define === 'function' && define.amd ? define('@covalent/experimental/tab-select', ['exports', '@angular/core', '@angular/cdk/portal', '@covalent/core/common', '@angular/forms', '@angular/common', '@angular/material/tabs'], factory) :
-	(factory((global.covalent = global.covalent || {}, global.covalent.experimental = global.covalent.experimental || {}, global.covalent.experimental['tab-select'] = {}),global.ng.core,global.ng.cdk.portal,global.common,global.ng.forms,global.ng.common,global.ng.material.tabs));
-}(this, (function (exports,core,portal,common,forms,common$1,tabs) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/cdk/portal'), require('@covalent/core/common'), require('@angular/forms'), require('@angular/cdk/coercion'), require('@angular/common'), require('@angular/material/tabs')) :
+	typeof define === 'function' && define.amd ? define('@covalent/experimental/tab-select', ['exports', '@angular/core', '@angular/cdk/portal', '@covalent/core/common', '@angular/forms', '@angular/cdk/coercion', '@angular/common', '@angular/material/tabs'], factory) :
+	(factory((global.covalent = global.covalent || {}, global.covalent.experimental = global.covalent.experimental || {}, global.covalent.experimental['tab-select'] = {}),global.ng.core,global.ng.cdk.portal,global.common,global.ng.forms,global.ng.cdk.coercion,global.ng.common,global.ng.material.tabs));
+}(this, (function (exports,core,portal,common,forms,coercion,common$1,tabs) { 'use strict';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -85,6 +85,7 @@ var TdTabSelectComponent = /** @class */ (function (_super) {
         _this._subs = [];
         _this._values = [];
         _this._selectedIndex = 0;
+        _this._stretchTabs = false;
         _this.valueChange = new core.EventEmitter();
         return _this;
     }
@@ -98,6 +99,16 @@ var TdTabSelectComponent = /** @class */ (function (_super) {
     Object.defineProperty(TdTabSelectComponent.prototype, "tabOptions", {
         get: function () {
             return this._tabOptions ? this._tabOptions.toArray() : undefined;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(TdTabSelectComponent.prototype, "stretchTabs", {
+        get: function () {
+            return this._stretchTabs;
+        },
+        set: function (stretchTabs) {
+            this._stretchTabs = coercion.coerceBooleanProperty(stretchTabs);
         },
         enumerable: true,
         configurable: true
@@ -159,7 +170,7 @@ TdTabSelectComponent.decorators = [
                         multi: true,
                     }],
                 selector: 'td-tab-select',
-                template: "<mat-tab-group [backgroundColor]=\"backgroundColor\"\n                [color]=\"color\"\n                [disableRipple]=\"disableRipple\"\n                [selectedIndex]=\"selectedIndex\"\n                (selectedIndexChange)=\"selectedIndexChange($event)\">\n  <ng-template let-tabOption\n                ngFor\n                [ngForOf]=\"tabOptions\">\n    <mat-tab [disabled]=\"tabOption.disabled || disabled\">\n      <ng-template matTabLabel>\n        <ng-template [cdkPortalOutlet]=\"tabOption.content\">\n        </ng-template>\n      </ng-template>\n    </mat-tab>\n  </ng-template>\n</mat-tab-group>\n",
+                template: "<mat-tab-group [attr.mat-stretch-tabs]=\"stretchTabs ? true : undefined\"\n                [backgroundColor]=\"backgroundColor\"\n                [color]=\"color\"\n                [disableRipple]=\"disableRipple\"\n                [selectedIndex]=\"selectedIndex\"\n                (selectedIndexChange)=\"selectedIndexChange($event)\">\n  <ng-template let-tabOption\n                ngFor\n                [ngForOf]=\"tabOptions\">\n    <mat-tab [disabled]=\"tabOption.disabled || disabled\">\n      <ng-template matTabLabel>\n        <ng-template [cdkPortalOutlet]=\"tabOption.content\">\n        </ng-template>\n      </ng-template>\n    </mat-tab>\n  </ng-template>\n</mat-tab-group>\n",
                 styles: [""],
                 inputs: ['value', 'disabled', 'disableRipple'],
             },] },
@@ -169,6 +180,7 @@ TdTabSelectComponent.ctorParameters = function () { return [
 ]; };
 TdTabSelectComponent.propDecorators = {
     "_tabOptions": [{ type: core.ContentChildren, args: [TdTabOptionComponent,] },],
+    "stretchTabs": [{ type: core.Input, args: ['stretchTabs',] },],
     "color": [{ type: core.Input, args: ['color',] },],
     "backgroundColor": [{ type: core.Input, args: ['backgroundColor',] },],
     "valueChange": [{ type: core.Output },],

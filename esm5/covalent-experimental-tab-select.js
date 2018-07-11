@@ -3,6 +3,7 @@ import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef, ViewChild
 import { TemplatePortal, PortalModule } from '@angular/cdk/portal';
 import { mixinDisabled, mixinControlValueAccessor, mixinDisableRipple } from '@covalent/core/common';
 import { NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { CommonModule } from '@angular/common';
 import { MatTabsModule } from '@angular/material/tabs';
 
@@ -62,6 +63,7 @@ var TdTabSelectComponent = /** @class */ (function (_super) {
         _this._subs = [];
         _this._values = [];
         _this._selectedIndex = 0;
+        _this._stretchTabs = false;
         _this.valueChange = new EventEmitter();
         return _this;
     }
@@ -75,6 +77,16 @@ var TdTabSelectComponent = /** @class */ (function (_super) {
     Object.defineProperty(TdTabSelectComponent.prototype, "tabOptions", {
         get: function () {
             return this._tabOptions ? this._tabOptions.toArray() : undefined;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(TdTabSelectComponent.prototype, "stretchTabs", {
+        get: function () {
+            return this._stretchTabs;
+        },
+        set: function (stretchTabs) {
+            this._stretchTabs = coerceBooleanProperty(stretchTabs);
         },
         enumerable: true,
         configurable: true
@@ -136,7 +148,7 @@ TdTabSelectComponent.decorators = [
                         multi: true,
                     }],
                 selector: 'td-tab-select',
-                template: "<mat-tab-group [backgroundColor]=\"backgroundColor\"\n                [color]=\"color\"\n                [disableRipple]=\"disableRipple\"\n                [selectedIndex]=\"selectedIndex\"\n                (selectedIndexChange)=\"selectedIndexChange($event)\">\n  <ng-template let-tabOption\n                ngFor\n                [ngForOf]=\"tabOptions\">\n    <mat-tab [disabled]=\"tabOption.disabled || disabled\">\n      <ng-template matTabLabel>\n        <ng-template [cdkPortalOutlet]=\"tabOption.content\">\n        </ng-template>\n      </ng-template>\n    </mat-tab>\n  </ng-template>\n</mat-tab-group>\n",
+                template: "<mat-tab-group [attr.mat-stretch-tabs]=\"stretchTabs ? true : undefined\"\n                [backgroundColor]=\"backgroundColor\"\n                [color]=\"color\"\n                [disableRipple]=\"disableRipple\"\n                [selectedIndex]=\"selectedIndex\"\n                (selectedIndexChange)=\"selectedIndexChange($event)\">\n  <ng-template let-tabOption\n                ngFor\n                [ngForOf]=\"tabOptions\">\n    <mat-tab [disabled]=\"tabOption.disabled || disabled\">\n      <ng-template matTabLabel>\n        <ng-template [cdkPortalOutlet]=\"tabOption.content\">\n        </ng-template>\n      </ng-template>\n    </mat-tab>\n  </ng-template>\n</mat-tab-group>\n",
                 styles: [""],
                 inputs: ['value', 'disabled', 'disableRipple'],
             },] },
@@ -146,6 +158,7 @@ TdTabSelectComponent.ctorParameters = function () { return [
 ]; };
 TdTabSelectComponent.propDecorators = {
     "_tabOptions": [{ type: ContentChildren, args: [TdTabOptionComponent,] },],
+    "stretchTabs": [{ type: Input, args: ['stretchTabs',] },],
     "color": [{ type: Input, args: ['color',] },],
     "backgroundColor": [{ type: Input, args: ['backgroundColor',] },],
     "valueChange": [{ type: Output },],
