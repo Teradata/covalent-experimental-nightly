@@ -1,0 +1,11 @@
+{
+  "main": "../bundles/covalent-experimental-breadcrumbs.umd.js",
+  "module": "../esm5/covalent-experimental-breadcrumbs.js",
+  "es2015": "../esm2015/covalent-experimental-breadcrumbs.js",
+  "typings": "covalent-experimental-breadcrumbs.d.ts",
+  "metadata": "covalent-experimental-breadcrumbs.metadata.json",
+  "dependencies": {
+    "tslib": "^1.9.0"
+  },
+  "name": "@covalent/experimental/breadcrumbs"
+}
