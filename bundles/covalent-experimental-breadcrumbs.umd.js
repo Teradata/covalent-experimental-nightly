@@ -1,8 +1,8 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('rxjs'), require('rxjs/operators'), require('rxjs/observable/fromEvent'), require('rxjs/observable/merge'), require('@angular/common'), require('@angular/material/icon')) :
-	typeof define === 'function' && define.amd ? define('@covalent/experimental/breadcrumbs', ['exports', '@angular/core', 'rxjs', 'rxjs/operators', 'rxjs/observable/fromEvent', 'rxjs/observable/merge', '@angular/common', '@angular/material/icon'], factory) :
-	(factory((global.covalent = global.covalent || {}, global.covalent.experimental = global.covalent.experimental || {}, global.covalent.experimental.breadcrumbs = {}),global.ng.core,global.rxjs,global.Rx.Observable.prototype,global.Rx.Observable,global.Rx.Observable,global.ng.common,global.ng.material.icon));
-}(this, (function (exports,core,rxjs,operators,fromEvent,merge,common,icon) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('rxjs'), require('rxjs/operators'), require('@angular/common'), require('@angular/material/icon')) :
+	typeof define === 'function' && define.amd ? define('@covalent/experimental/breadcrumbs', ['exports', '@angular/core', 'rxjs', 'rxjs/operators', '@angular/common', '@angular/material/icon'], factory) :
+	(factory((global.covalent = global.covalent || {}, global.covalent.experimental = global.covalent.experimental || {}, global.covalent.experimental.breadcrumbs = {}),global.ng.core,global.rxjs,global.Rx.Observable.prototype,global.ng.common,global.ng.material.icon));
+}(this, (function (exports,core,rxjs,operators,common,icon) { 'use strict';
 
 var TdBreadcrumbComponent = /** @class */ (function () {
     function TdBreadcrumbComponent(_elementRef, _renderer, _changeDetectorRef) {
@@ -78,7 +78,7 @@ var TdBreadcrumbsComponent = /** @class */ (function () {
     }
     TdBreadcrumbsComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this._resizeSubscription = merge.merge(fromEvent.fromEvent(window, 'resize').pipe(operators.debounceTime(10)), this._widthSubject.asObservable().pipe(operators.distinctUntilChanged())).subscribe(function () {
+        this._resizeSubscription = rxjs.merge(rxjs.fromEvent(window, 'resize').pipe(operators.debounceTime(10)), this._widthSubject.asObservable().pipe(operators.distinctUntilChanged())).subscribe(function () {
             if (!_this._resizing) {
                 _this._resizing = true;
                 setTimeout(function () {

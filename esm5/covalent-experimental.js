@@ -1,10 +1,8 @@
 import { __extends } from 'tslib';
 import { Component, NgModule, ElementRef, Renderer2, HostBinding, ChangeDetectionStrategy, ChangeDetectorRef, ContentChildren, Input, ViewChild, TemplateRef, ViewContainerRef, forwardRef, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Subscription, Subject } from 'rxjs';
+import { Subscription, Subject, fromEvent, merge } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { fromEvent } from 'rxjs/observable/fromEvent';
-import { merge } from 'rxjs/observable/merge';
 import { MatIconModule } from '@angular/material/icon';
 import { TemplatePortal, PortalModule } from '@angular/cdk/portal';
 import { mixinDisabled, mixinControlValueAccessor, mixinDisableRipple } from '@covalent/core/common';

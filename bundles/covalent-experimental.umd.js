@@ -1,8 +1,8 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/common'), require('rxjs'), require('rxjs/operators'), require('rxjs/observable/fromEvent'), require('rxjs/observable/merge'), require('@angular/material/icon'), require('@angular/cdk/portal'), require('@covalent/core/common'), require('@angular/forms'), require('@angular/cdk/coercion'), require('@angular/material/tabs')) :
-	typeof define === 'function' && define.amd ? define('@covalent/experimental', ['exports', '@angular/core', '@angular/common', 'rxjs', 'rxjs/operators', 'rxjs/observable/fromEvent', 'rxjs/observable/merge', '@angular/material/icon', '@angular/cdk/portal', '@covalent/core/common', '@angular/forms', '@angular/cdk/coercion', '@angular/material/tabs'], factory) :
-	(factory((global.covalent = global.covalent || {}, global.covalent.experimental = {}),global.ng.core,global.ng.common,global.rxjs,global.Rx.Observable.prototype,global.Rx.Observable,global.Rx.Observable,global.ng.material.icon,global.ng.cdk.portal,global.covalent.core.common,global.ng.forms,global.ng.cdk.coercion,global.ng.material.tabs));
-}(this, (function (exports,core,common,rxjs,operators,fromEvent,merge,icon,portal,common$1,forms,coercion,tabs) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/common'), require('rxjs'), require('rxjs/operators'), require('@angular/material/icon'), require('@angular/cdk/portal'), require('@covalent/core/common'), require('@angular/forms'), require('@angular/cdk/coercion'), require('@angular/material/tabs')) :
+	typeof define === 'function' && define.amd ? define('@covalent/experimental', ['exports', '@angular/core', '@angular/common', 'rxjs', 'rxjs/operators', '@angular/material/icon', '@angular/cdk/portal', '@covalent/core/common', '@angular/forms', '@angular/cdk/coercion', '@angular/material/tabs'], factory) :
+	(factory((global.covalent = global.covalent || {}, global.covalent.experimental = {}),global.ng.core,global.ng.common,global.rxjs,global.Rx.Observable.prototype,global.ng.material.icon,global.ng.cdk.portal,global.covalent.core.common,global.ng.forms,global.ng.cdk.coercion,global.ng.material.tabs));
+}(this, (function (exports,core,common,rxjs,operators,icon,portal,common$1,forms,coercion,tabs) { 'use strict';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -135,7 +135,7 @@ var TdBreadcrumbsComponent = /** @class */ (function () {
     }
     TdBreadcrumbsComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this._resizeSubscription = merge.merge(fromEvent.fromEvent(window, 'resize').pipe(operators.debounceTime(10)), this._widthSubject.asObservable().pipe(operators.distinctUntilChanged())).subscribe(function () {
+        this._resizeSubscription = rxjs.merge(rxjs.fromEvent(window, 'resize').pipe(operators.debounceTime(10)), this._widthSubject.asObservable().pipe(operators.distinctUntilChanged())).subscribe(function () {
             if (!_this._resizing) {
                 _this._resizing = true;
                 setTimeout(function () {

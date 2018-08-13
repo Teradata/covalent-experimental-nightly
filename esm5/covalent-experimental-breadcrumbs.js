@@ -1,8 +1,6 @@
 import { Component, ElementRef, Renderer2, HostBinding, ChangeDetectionStrategy, ChangeDetectorRef, ContentChildren, Input, NgModule } from '@angular/core';
-import { Subscription, Subject } from 'rxjs';
+import { Subscription, Subject, fromEvent, merge } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { fromEvent } from 'rxjs/observable/fromEvent';
-import { merge } from 'rxjs/observable/merge';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 
