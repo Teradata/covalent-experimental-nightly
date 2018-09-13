@@ -15,7 +15,10 @@ export declare class TdBreadcrumbComponent implements AfterViewInit {
      * Width of the DOM element of the crumb
      */
     readonly width: number;
-    private readonly displayBinding;
+    /**
+     * Gets the display style of the crumb
+     */
+    readonly displayBinding: string;
     constructor(_elementRef: ElementRef, _renderer: Renderer2, _changeDetectorRef: ChangeDetectorRef);
     ngAfterViewInit(): void;
     /**

@@ -49,9 +49,12 @@ class TdBreadcrumbComponent {
         return this._width;
     }
     /**
+     * Gets the display style of the crumb
      * @return {?}
      */
     get displayBinding() {
+        // Set the display to none on the component, just in case the end user is hiding
+        // and showing them instead of the component doing itself for reasons like responsive
         return this._displayCrumb ? undefined : 'none';
     }
     /**
