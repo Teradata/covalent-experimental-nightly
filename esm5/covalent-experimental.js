@@ -141,7 +141,15 @@ var TdBreadcrumbsComponent = /** @class */ (function () {
     };
     Object.defineProperty(TdBreadcrumbsComponent.prototype, "nativeElementWidth", {
         get: function () {
-            return ((this._elementRef.nativeElement)).getBoundingClientRect().width;
+            var element = ((this._elementRef.nativeElement));
+            var style = window.getComputedStyle(element);
+            var borderLeft = parseInt(style.borderLeft, 10);
+            var borderRight = parseInt(style.borderRight, 10);
+            var marginLeft = parseInt(style.marginLeft, 10);
+            var marginRight = parseInt(style.marginRight, 10);
+            var paddingLeft = parseInt(style.paddingLeft, 10);
+            var paddingRight = parseInt(style.paddingRight, 10);
+            return element.getBoundingClientRect().width - borderLeft - borderRight - marginLeft - marginRight - paddingLeft - paddingRight;
         },
         enumerable: true,
         configurable: true
@@ -199,7 +207,7 @@ var TdBreadcrumbsComponent = /** @class */ (function () {
 TdBreadcrumbsComponent.decorators = [
     { type: Component, args: [{
                 selector: 'td-breadcrumbs',
-                styles: [":host .td-breadcrumbs{white-space:nowrap}"],
+                styles: [":host{display:block;width:100%}:host .td-breadcrumbs{white-space:nowrap}"],
                 template: "<div class=\"td-breadcrumbs\">\n  <ng-content></ng-content>\n</div>\n",
                 changeDetection: ChangeDetectionStrategy.OnPush,
             },] },

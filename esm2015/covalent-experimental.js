@@ -221,7 +221,16 @@ class TdBreadcrumbsComponent {
      * @return {?}
      */
     get nativeElementWidth() {
-        return (/** @type {?} */ (this._elementRef.nativeElement)).getBoundingClientRect().width;
+        let /** @type {?} */ element = (/** @type {?} */ (this._elementRef.nativeElement));
+        // Need to take into account border, margin and padding that might be around all the crumbs
+        let /** @type {?} */ style = window.getComputedStyle(element);
+        let /** @type {?} */ borderLeft = parseInt(style.borderLeft, 10);
+        let /** @type {?} */ borderRight = parseInt(style.borderRight, 10);
+        let /** @type {?} */ marginLeft = parseInt(style.marginLeft, 10);
+        let /** @type {?} */ marginRight = parseInt(style.marginRight, 10);
+        let /** @type {?} */ paddingLeft = parseInt(style.paddingLeft, 10);
+        let /** @type {?} */ paddingRight = parseInt(style.paddingRight, 10);
+        return element.getBoundingClientRect().width - borderLeft - borderRight - marginLeft - marginRight - paddingLeft - paddingRight;
     }
     /**
      * The total count of individual breadcrumbs
@@ -289,7 +298,7 @@ class TdBreadcrumbsComponent {
 TdBreadcrumbsComponent.decorators = [
     { type: Component, args: [{
                 selector: 'td-breadcrumbs',
-                styles: [`:host .td-breadcrumbs{white-space:nowrap}`],
+                styles: [`:host{display:block;width:100%}:host .td-breadcrumbs{white-space:nowrap}`],
                 template: `<div class="td-breadcrumbs">
   <ng-content></ng-content>
 </div>
