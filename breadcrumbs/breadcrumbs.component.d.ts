@@ -25,6 +25,6 @@ export declare class TdBreadcrumbsComponent implements OnInit, DoCheck, AfterCon
     /**
      * Set the crumb icon separators
      */
-    private setCrumbIcons();
-    private displayWidthAvailableCrumbs();
+    private setCrumbIcons;
+    private displayWidthAvailableCrumbs;
 }

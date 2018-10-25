@@ -8,8 +8,8 @@ export declare class TdBreadcrumbComponent implements AfterViewInit {
     separatorIcon: string;
     _displayIcon: boolean;
     /**
-     * Whether to display the crumb or not
-     */
+    * Whether to display the crumb or not
+    */
     displayCrumb: boolean;
     /**
      * Width of the DOM element of the crumb

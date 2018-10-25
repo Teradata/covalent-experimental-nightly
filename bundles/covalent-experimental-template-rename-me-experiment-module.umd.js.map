@@ -1,18 +1,1 @@
-{
-  "version": 3,
-  "file": "covalent-experimental-template-rename-me-experiment-module.umd.js",
-  "sources": [
-    "ng://@covalent/experimental/template-rename-me-experiment-module/out/rename-me.module.ts",
-    "ng://@covalent/experimental/template-rename-me-experiment-module/out/rename-me.component.ts"
-  ],
-  "sourcesContent": [
-    "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { TdRenameMeComponent } from './rename-me.component';\n\n@NgModule({\n  imports: [\n    CommonModule,\n  ],\n  declarations: [\n    TdRenameMeComponent,\n  ],\n  exports: [\n    TdRenameMeComponent,\n  ],\n})\nexport class CovalentRenameMeModule {\n\n}\n",
-    "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'td-renameMe',\n  styles: [``],\n  template: `<a href=\"https://github.com/Teradata/covalent\"> Test Link </a>\n`,\n})\nexport class TdRenameMeComponent {\n\n  constructor() {\n    // stub\n  }\n\n}\n"
-  ],
-  "names": [
-    "CommonModule",
-    "NgModule",
-    "Component"
-  ],
-  "mappings": ";;;;;;ACAA,IAAA,mBAAA,kBAAA,YAAA;IAUE,SAAF,mBAAA,GAAA;KAEG;;;;IAVH,EAAA,IAAA,EAACE,cAAS,EAAV,IAAA,EAAA,CAAW;gBACT,QAAQ,EAAE,aAAa;gBACvB,MAAM,EAAE,CAAC,EAAE,CAAC;gBACZ,QAAQ,EAAE,oEACX;aACA,EAAD,EAAA;;;ADPA,IAAA,sBAAA,kBAAA,YAAA;IAAA,SAAA,sBAAA,GAAA;;;;;IAKA,EAAA,IAAA,EAACD,aAAQ,EAAT,IAAA,EAAA,CAAU;gBACR,OAAO,EAAE;oBACPD,mBAAY;iBACb;gBACD,YAAY,EAAE;oBACZ,mBAAmB;iBACpB;gBACD,OAAO,EAAE;oBACP,mBAAmB;iBACpB;aACF,EAAD,EAAA;;;;;;;;;;;;;;;"
-}
+{"version":3,"file":"covalent-experimental-template-rename-me-experiment-module.umd.js.map","sources":["ng://@covalent/experimental/template-rename-me-experiment-module/rename-me.component.ts","ng://@covalent/experimental/template-rename-me-experiment-module/rename-me.module.ts"],"sourcesContent":["import { Component } from '@angular/core';\n\n@Component({\n  selector: 'td-renameMe',\n  styleUrls: ['./rename-me.component.scss'],\n  templateUrl: './rename-me.component.html',\n})\nexport class TdRenameMeComponent {\n\n  constructor() {\n    // stub\n  }\n\n}\n","import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { TdRenameMeComponent } from './rename-me.component';\n\n@NgModule({\n  imports: [\n    CommonModule,\n  ],\n  declarations: [\n    TdRenameMeComponent,\n  ],\n  exports: [\n    TdRenameMeComponent,\n  ],\n})\nexport class CovalentRenameMeModule {\n\n}\n"],"names":["Component","NgModule","CommonModule"],"mappings":";;;;;;;;;;AAAA;QASE;;SAEC;;oBATFA,cAAS,SAAC;wBACT,QAAQ,EAAE,aAAa;wBAEvB,8EAAyC;;qBAC1C;;;;QAOD,0BAAC;KAXD;;;;;;ACFA;QAKA;SAaC;;oBAbAC,aAAQ,SAAC;wBACR,OAAO,EAAE;4BACPC,mBAAY;yBACb;wBACD,YAAY,EAAE;4BACZ,mBAAmB;yBACpB;wBACD,OAAO,EAAE;4BACP,mBAAmB;yBACpB;qBACF;;QAGD,6BAAC;KAbD;;;;;;;;;;;;;;;;;;;;;;;;;;;;"}

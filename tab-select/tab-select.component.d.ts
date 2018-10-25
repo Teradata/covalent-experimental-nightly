@@ -6,7 +6,7 @@ export declare class TdTabSelectBase {
     _changeDetectorRef: ChangeDetectorRef;
     constructor(_changeDetectorRef: ChangeDetectorRef);
 }
-export declare const _TdTabSelectMixinBase: (new (...args: any[]) => IControlValueAccessor) & (new (...args: any[]) => ICanDisable) & (new (...args: any[]) => ICanDisableRipple) & typeof TdTabSelectBase;
+export declare const _TdTabSelectMixinBase: import("@covalent/core/common/behaviors/constructor").Constructor<IControlValueAccessor> & import("@covalent/core/common/behaviors/constructor").Constructor<ICanDisable> & import("@covalent/core/common/behaviors/constructor").Constructor<ICanDisableRipple> & typeof TdTabSelectBase;
 export declare class TdTabSelectComponent extends _TdTabSelectMixinBase implements IControlValueAccessor, ICanDisable, ICanDisableRipple, OnInit, AfterContentInit, OnDestroy {
     private _subs;
     private _values;
@@ -47,10 +47,10 @@ export declare class TdTabSelectComponent extends _TdTabSelectMixinBase implemen
     /**
      * Refresh the values array whenever the number of tabs gets updated
      */
-    private _refreshValues();
+    private _refreshValues;
     /**
      * Try to set value depending if its part of our options
      * else set the value of the first tab.
      */
-    private _setValue(value);
+    private _setValue;
 }

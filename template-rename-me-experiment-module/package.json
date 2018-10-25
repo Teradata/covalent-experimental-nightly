@@ -1,11 +1,13 @@
 {
   "main": "../bundles/covalent-experimental-template-rename-me-experiment-module.umd.js",
-  "module": "../esm5/covalent-experimental-template-rename-me-experiment-module.js",
-  "es2015": "../esm2015/covalent-experimental-template-rename-me-experiment-module.js",
+  "module": "../fesm5/covalent-experimental-template-rename-me-experiment-module.js",
+  "es2015": "../fesm2015/covalent-experimental-template-rename-me-experiment-module.js",
+  "esm5": "../esm5/template-rename-me-experiment-module/covalent-experimental-template-rename-me-experiment-module.js",
+  "esm2015": "../esm2015/template-rename-me-experiment-module/covalent-experimental-template-rename-me-experiment-module.js",
+  "fesm5": "../fesm5/covalent-experimental-template-rename-me-experiment-module.js",
+  "fesm2015": "../fesm2015/covalent-experimental-template-rename-me-experiment-module.js",
   "typings": "covalent-experimental-template-rename-me-experiment-module.d.ts",
   "metadata": "covalent-experimental-template-rename-me-experiment-module.metadata.json",
-  "dependencies": {
-    "tslib": "^1.9.0"
-  },
+  "sideEffects": false,
   "name": "@covalent/experimental/template-rename-me-experiment-module"
 }

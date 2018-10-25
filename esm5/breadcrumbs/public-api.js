@@ -1,0 +1,7 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ */
+export { CovalentBreadcrumbsModule } from './breadcrumbs.module';
+export { TdBreadcrumbsComponent } from './breadcrumbs.component';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLWFwaS5qcyIsInNvdXJjZVJvb3QiOiJuZzovL0Bjb3ZhbGVudC9leHBlcmltZW50YWwvYnJlYWRjcnVtYnMvIiwic291cmNlcyI6WyJwdWJsaWMtYXBpLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7QUFBQSwwQ0FBYyxzQkFBc0IsQ0FBQztBQUNyQyx1Q0FBYyx5QkFBeUIsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCAqIGZyb20gJy4vYnJlYWRjcnVtYnMubW9kdWxlJztcbmV4cG9ydCAqIGZyb20gJy4vYnJlYWRjcnVtYnMuY29tcG9uZW50JztcbiJdfQ==

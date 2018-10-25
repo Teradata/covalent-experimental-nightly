@@ -1,11 +1,13 @@
 {
   "main": "../bundles/covalent-experimental-tab-select.umd.js",
-  "module": "../esm5/covalent-experimental-tab-select.js",
-  "es2015": "../esm2015/covalent-experimental-tab-select.js",
+  "module": "../fesm5/covalent-experimental-tab-select.js",
+  "es2015": "../fesm2015/covalent-experimental-tab-select.js",
+  "esm5": "../esm5/tab-select/covalent-experimental-tab-select.js",
+  "esm2015": "../esm2015/tab-select/covalent-experimental-tab-select.js",
+  "fesm5": "../fesm5/covalent-experimental-tab-select.js",
+  "fesm2015": "../fesm2015/covalent-experimental-tab-select.js",
   "typings": "covalent-experimental-tab-select.d.ts",
   "metadata": "covalent-experimental-tab-select.metadata.json",
-  "dependencies": {
-    "tslib": "^1.9.0"
-  },
+  "sideEffects": false,
   "name": "@covalent/experimental/tab-select"
 }
