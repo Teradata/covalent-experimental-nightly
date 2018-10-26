@@ -6,7 +6,7 @@ export declare class TdTabOptionBase {
     _changeDetectorRef: ChangeDetectorRef;
     constructor(_viewContainerRef: ViewContainerRef, _changeDetectorRef: ChangeDetectorRef);
 }
-export declare const _TdTabOptionMixinBase: import("@covalent/core/common/behaviors/constructor").Constructor<ICanDisable> & typeof TdTabOptionBase;
+export declare const _TdTabOptionMixinBase: (new (...args: any[]) => ICanDisable) & typeof TdTabOptionBase;
 export declare class TdTabOptionComponent extends _TdTabOptionMixinBase implements ICanDisable, OnInit {
     private _contentPortal;
     readonly content: TemplatePortal<any>;
