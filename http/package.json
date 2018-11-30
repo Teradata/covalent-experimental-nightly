@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/covalent-experimental-http.umd.js",
+  "module": "../fesm5/covalent-experimental-http.js",
+  "es2015": "../fesm2015/covalent-experimental-http.js",
+  "esm5": "../esm5/http/covalent-experimental-http.js",
+  "esm2015": "../esm2015/http/covalent-experimental-http.js",
+  "fesm5": "../fesm5/covalent-experimental-http.js",
+  "fesm2015": "../fesm2015/covalent-experimental-http.js",
+  "typings": "covalent-experimental-http.d.ts",
+  "metadata": "covalent-experimental-http.metadata.json",
+  "sideEffects": false,
+  "name": "@covalent/experimental/http"
+}
