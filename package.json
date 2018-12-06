@@ -17,8 +17,7 @@
     "@angular/common": "^7.0.0",
     "@angular/core": "^7.0.0",
     "@angular/cdk": "^7.0.0",
-    "@angular/material": "^7.0.0",
-    "@covalent/http": "^2.0.0-beta.5"
+    "@angular/material": "^7.0.0"
   },
   "main": "bundles/covalent-experimental.umd.js",
   "module": "fesm5/covalent-experimental.js",
