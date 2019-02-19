@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, NgModule } from '@angular/core';
+import { __assign, __values, __read } from 'tslib';
+import { chain, mergeWith, url, apply, branchAndMerge, template } from '@angular-devkit/schematics';
+import { addPackageToPackageJson } from '@angular/material/schematics/ng-add/package-config';
+import { strings } from '@angular-devkit/core';
+import { getProjectFromWorkspace, getProjectTargetOptions } from '@angular/cdk/schematics';
+import { getWorkspace } from '@schematics/angular/utility/config';
 
 /**
  * @fileoverview added by tsickle
@@ -58,6 +64,223 @@ var CovalentRenameMeModule = /** @class */ (function () {
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
  */
+/** @type {?} */
+var covalentCoreVersion = '2.0.0';
+/** @type {?} */
+var materialVersion = '7.0.1';
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ */
+var DynamicForms = /** @class */ (function () {
+    function DynamicForms() {
+    }
+    /**
+     * @param {?} options
+     * @return {?}
+     */
+    DynamicForms.prototype.enabled = /**
+     * @param {?} options
+     * @return {?}
+     */
+    function (options) {
+        return options.dynamicForms;
+    };
+    /**
+     * @return {?}
+     */
+    DynamicForms.prototype.dependency = /**
+     * @return {?}
+     */
+    function () {
+        return '@covalent/dynamic-forms';
+    };
+    return DynamicForms;
+}());
+var Http = /** @class */ (function () {
+    function Http() {
+    }
+    /**
+     * @param {?} options
+     * @return {?}
+     */
+    Http.prototype.enabled = /**
+     * @param {?} options
+     * @return {?}
+     */
+    function (options) {
+        return options.http;
+    };
+    /**
+     * @return {?}
+     */
+    Http.prototype.dependency = /**
+     * @return {?}
+     */
+    function () {
+        return '@covalent/http';
+    };
+    return Http;
+}());
+var Highlight = /** @class */ (function () {
+    function Highlight() {
+    }
+    /**
+     * @param {?} options
+     * @return {?}
+     */
+    Highlight.prototype.enabled = /**
+     * @param {?} options
+     * @return {?}
+     */
+    function (options) {
+        return options.highlight;
+    };
+    /**
+     * @return {?}
+     */
+    Highlight.prototype.dependency = /**
+     * @return {?}
+     */
+    function () {
+        return '@covalent/highlight';
+    };
+    return Highlight;
+}());
+var Markdown = /** @class */ (function () {
+    function Markdown() {
+    }
+    /**
+     * @param {?} options
+     * @return {?}
+     */
+    Markdown.prototype.enabled = /**
+     * @param {?} options
+     * @return {?}
+     */
+    function (options) {
+        return options.markdown;
+    };
+    /**
+     * @return {?}
+     */
+    Markdown.prototype.dependency = /**
+     * @return {?}
+     */
+    function () {
+        return '@covalent/markdown';
+    };
+    return Markdown;
+}());
+var FlavoredMarkdown = /** @class */ (function () {
+    function FlavoredMarkdown() {
+    }
+    /**
+     * @param {?} options
+     * @return {?}
+     */
+    FlavoredMarkdown.prototype.enabled = /**
+     * @param {?} options
+     * @return {?}
+     */
+    function (options) {
+        return options.flavoredMarkdown;
+    };
+    /**
+     * @return {?}
+     */
+    FlavoredMarkdown.prototype.dependency = /**
+     * @return {?}
+     */
+    function () {
+        return '@covalent/flavored-markdown';
+    };
+    return FlavoredMarkdown;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ */
+/**
+ * @param {?} options
+ * @return {?}
+ */
+function addDependenciesAndFiles(options) {
+    return chain([
+        function (host) {
+            addPackageToPackageJson(host, '@angular/material', "~" + materialVersion);
+            addPackageToPackageJson(host, '@covalent/core', "~" + covalentCoreVersion);
+            /** @type {?} */
+            var components = [new DynamicForms(), new Http(), new Highlight(), new Markdown(), new FlavoredMarkdown()];
+            components.forEach(function (component) {
+                if (component.enabled(options)) {
+                    addPackageToPackageJson(host, component.dependency(), "~" + covalentCoreVersion);
+                }
+            });
+        },
+        mergeFiles(options),
+        addThemeToAngularJson(),
+    ]);
+}
+/**
+ * @param {?} options
+ * @return {?}
+ */
+function mergeFiles(options) {
+    /** @type {?} */
+    var templateSource = apply(url('./files'), [
+        template(__assign({}, strings, options)),
+    ]);
+    return branchAndMerge(mergeWith(templateSource));
+}
+/**
+ * @return {?}
+ */
+function addThemeToAngularJson() {
+    return function (host) {
+        var e_1, _a;
+        /** @type {?} */
+        var workspace = getWorkspace(host);
+        /** @type {?} */
+        var project = getProjectFromWorkspace(workspace);
+        /** @type {?} */
+        var targetOptions = getProjectTargetOptions(project, 'build');
+        /** @type {?} */
+        var assetPath = "src/theme.scss";
+        /** @type {?} */
+        var prebuiltThemePathSegment = "src/styles.scss";
+        if (!targetOptions.styles) {
+            targetOptions.styles = [assetPath];
+        }
+        else {
+            /** @type {?} */
+            var existingStyles = targetOptions.styles.map(function (s) { return typeof s === 'string' ? s : s.input; });
+            try {
+                for (var _b = __values(existingStyles.entries()), _c = _b.next(); !_c.done; _c = _b.next()) {
+                    var _d = __read(_c.value, 2), index = _d[0], stylePath = _d[1];
+                    if (stylePath === assetPath) {
+                        return;
+                    }
+                    if (stylePath.includes(prebuiltThemePathSegment)) {
+                        targetOptions.styles.splice(index, 0);
+                    }
+                }
+            }
+            catch (e_1_1) { e_1 = { error: e_1_1 }; }
+            finally {
+                try {
+                    if (_c && !_c.done && (_a = _b.return)) _a.call(_b);
+                }
+                finally { if (e_1) throw e_1.error; }
+            }
+            targetOptions.styles.unshift(assetPath);
+        }
+        host.overwrite('angular.json', JSON.stringify(workspace, undefined, 2));
+        return host;
+    };
+}
 
 /**
  * @fileoverview added by tsickle
@@ -69,6 +292,11 @@ var CovalentRenameMeModule = /** @class */ (function () {
  * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
  */
 
-export { CovalentRenameMeModule, TdRenameMeComponent };
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ */
+
+export { CovalentRenameMeModule, TdRenameMeComponent, addDependenciesAndFiles };
 
 //# sourceMappingURL=covalent-experimental.js.map
