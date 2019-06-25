@@ -1,0 +1,10 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ */
+/**
+ * Generated bundle index. Do not edit.
+ */
+export { CovalentHelpModule, HelpComponent, HelpWindowComponent, DraggableHelpWindowDialogComponent, DraggableHelpWindowDialogService } from './index';
+export { HelpWindowToolbarComponent as ɵa } from './help-window/help-window-toolbar/help-window-toolbar.component';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY292YWxlbnQtZXhwZXJpbWVudGFsLWhlbHAuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9AY292YWxlbnQvZXhwZXJpbWVudGFsL2hlbHAvIiwic291cmNlcyI6WyJjb3ZhbGVudC1leHBlcmltZW50YWwtaGVscC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7O0FBSUEsNklBQWMsU0FBUyxDQUFDO0FBRXhCLE9BQU8sRUFBQywwQkFBMEIsSUFBSSxFQUFFLEVBQUMsTUFBTSxpRUFBaUUsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogR2VuZXJhdGVkIGJ1bmRsZSBpbmRleC4gRG8gbm90IGVkaXQuXG4gKi9cblxuZXhwb3J0ICogZnJvbSAnLi9pbmRleCc7XG5cbmV4cG9ydCB7SGVscFdpbmRvd1Rvb2xiYXJDb21wb25lbnQgYXMgybVhfSBmcm9tICcuL2hlbHAtd2luZG93L2hlbHAtd2luZG93LXRvb2xiYXIvaGVscC13aW5kb3ctdG9vbGJhci5jb21wb25lbnQnOyJdfQ==
