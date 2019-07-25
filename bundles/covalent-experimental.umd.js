@@ -33,15 +33,9 @@
         }
         CovalentRenameMeModule.decorators = [
             { type: core.NgModule, args: [{
-                        imports: [
-                            common.CommonModule,
-                        ],
-                        declarations: [
-                            TdRenameMeComponent,
-                        ],
-                        exports: [
-                            TdRenameMeComponent,
-                        ],
+                        imports: [common.CommonModule],
+                        declarations: [TdRenameMeComponent],
+                        exports: [TdRenameMeComponent],
                     },] }
         ];
         return CovalentRenameMeModule;
@@ -273,7 +267,13 @@
                 packageConfig.addPackageToPackageJson(host, '@angular/material', "~" + materialVersion);
                 packageConfig.addPackageToPackageJson(host, '@covalent/core', "~" + covalentCoreVersion);
                 /** @type {?} */
-                var components = [new DynamicForms(), new Http(), new Highlight(), new Markdown(), new FlavoredMarkdown()];
+                var components = [
+                    new DynamicForms(),
+                    new Http(),
+                    new Highlight(),
+                    new Markdown(),
+                    new FlavoredMarkdown(),
+                ];
                 components.forEach(function (component) {
                     if (component.enabled(options)) {
                         packageConfig.addPackageToPackageJson(host, component.dependency(), "~" + covalentCoreVersion);
@@ -316,7 +316,7 @@
             }
             else {
                 /** @type {?} */
-                var existingStyles = targetOptions.styles.map(function (s) { return typeof s === 'string' ? s : s.input; });
+                var existingStyles = targetOptions.styles.map(function (s) { return (typeof s === 'string' ? s : s.input); });
                 try {
                     for (var _b = __values(existingStyles.entries()), _c = _b.next(); !_c.done; _c = _b.next()) {
                         var _d = __read(_c.value, 2), index = _d[0], stylePath = _d[1];

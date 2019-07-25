@@ -13,7 +13,13 @@ function addDependenciesAndFiles(options) {
         function (host) {
             package_config_1.addPackageToPackageJson(host, '@angular/material', "~" + version_names_1.materialVersion);
             package_config_1.addPackageToPackageJson(host, '@covalent/core', "~" + version_names_1.covalentCoreVersion);
-            var components = [new components_1.DynamicForms(), new components_1.Http(), new components_1.Highlight(), new components_1.Markdown(), new components_1.FlavoredMarkdown()];
+            var components = [
+                new components_1.DynamicForms(),
+                new components_1.Http(),
+                new components_1.Highlight(),
+                new components_1.Markdown(),
+                new components_1.FlavoredMarkdown(),
+            ];
             components.forEach(function (component) {
                 if (component.enabled(options)) {
                     package_config_1.addPackageToPackageJson(host, component.dependency(), "~" + version_names_1.covalentCoreVersion);
@@ -42,7 +48,7 @@ function addThemeToAngularJson() {
             targetOptions.styles = [assetPath];
         }
         else {
-            var existingStyles = targetOptions.styles.map(function (s) { return typeof s === 'string' ? s : s.input; });
+            var existingStyles = targetOptions.styles.map(function (s) { return (typeof s === 'string' ? s : s.input); });
             for (var _i = 0, _a = existingStyles.entries(); _i < _a.length; _i++) {
                 var _b = _a[_i], index = _b[0], stylePath = _b[1];
                 if (stylePath === assetPath) {

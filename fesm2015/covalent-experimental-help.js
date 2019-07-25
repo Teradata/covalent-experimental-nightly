@@ -300,7 +300,7 @@ class HelpComponent {
 HelpComponent.decorators = [
     { type: Component, args: [{
                 selector: 'td-help',
-                template: "<ng-container *ngIf=\"!showEmptyState\">\n<button\n  mat-icon-button\n  [matTooltip]=\"goHomeLabel\"\n  (click)=\"reset()\"\n>\n  <mat-icon\n    [attr.aria-label]=\"goHomeLabel\"\n  >\n    home\n  </mat-icon>\n</button>\n\n<button\n  *ngIf=\"showGoBackButton\"\n  mat-icon-button\n  [matTooltip]=\"goBackLabel\"\n  (click)=\"goBack()\"\n>\n  <mat-icon\n    [attr.aria-label]=\"goBackLabel\"\n  >\n    arrow_back\n  </mat-icon>\n</button>\n\n<mat-action-list\n  *ngIf=\"showMenu\"\n>\n  <button\n    *ngFor=\"let item of currentMenuItems\"\n    (click)=\"handleItemSelected(item)\"\n    mat-list-item\n    [matTooltip]=\"getTitle(item)\"\n    matTooltipPosition=\"before\"\n    matTooltipShowDelay=\"500\"\n  >\n    <mat-icon\n      matListIcon\n    >\n      subject\n    </mat-icon>\n    <span class=\"text-truncate\">\n      {{ getTitle(item) }}\n    </span>\n  </button>\n</mat-action-list>\n\n<mat-progress-bar\n  *ngIf=\"loading\"\n  mode=\"indeterminate\"\n  color=\"accent\"\n  class=\"sticky\"\n>\n</mat-progress-bar>\n\n<td-flavored-markdown-loader\n  *ngIf=\"showTdMarkdownLoader\"\n  [url]=\"url\"\n  [httpOptions]=\"httpOptions\"\n  [anchor]=\"anchor\"\n  class=\"pad scroll-md\"\n  (contentReady)=\"handleContentReady()\"\n>\n</td-flavored-markdown-loader>\n\n<td-flavored-markdown\n  *ngIf=\"showTdMarkdown\"\n  [content]=\"markdownString\"\n  [hostedUrl]=\"url\"\n  [anchor]=\"anchor\"\n  class=\"pad scroll-md\"\n  (contentReady)=\"handleContentReady()\"\n>\n</td-flavored-markdown>\n</ng-container>\n\n<div\n  *ngIf=\"showEmptyState\"\n  layout=\"column\"\n  layout-align=\"center center\"\n  class=\"tc-grey-500 mat-typography pad-lg\"\n>\n  <mat-icon matListAvatar class=\"text-super push-bottom\">subject</mat-icon>\n  <h2>{{ emptyStateLabel }}</h2>\n</div>\n",
+                template: "<ng-container *ngIf=\"!showEmptyState\">\n  <button mat-icon-button [matTooltip]=\"goHomeLabel\" (click)=\"reset()\">\n    <mat-icon [attr.aria-label]=\"goHomeLabel\">\n      home\n    </mat-icon>\n  </button>\n\n  <button *ngIf=\"showGoBackButton\" mat-icon-button [matTooltip]=\"goBackLabel\" (click)=\"goBack()\">\n    <mat-icon [attr.aria-label]=\"goBackLabel\">\n      arrow_back\n    </mat-icon>\n  </button>\n\n  <mat-action-list *ngIf=\"showMenu\">\n    <button\n      *ngFor=\"let item of currentMenuItems\"\n      (click)=\"handleItemSelected(item)\"\n      mat-list-item\n      [matTooltip]=\"getTitle(item)\"\n      matTooltipPosition=\"before\"\n      matTooltipShowDelay=\"500\"\n    >\n      <mat-icon matListIcon>\n        subject\n      </mat-icon>\n      <span class=\"text-truncate\">\n        {{ getTitle(item) }}\n      </span>\n    </button>\n  </mat-action-list>\n\n  <mat-progress-bar *ngIf=\"loading\" mode=\"indeterminate\" color=\"accent\" class=\"sticky\"> </mat-progress-bar>\n\n  <td-flavored-markdown-loader\n    *ngIf=\"showTdMarkdownLoader\"\n    [url]=\"url\"\n    [httpOptions]=\"httpOptions\"\n    [anchor]=\"anchor\"\n    class=\"pad scroll-md\"\n    (contentReady)=\"handleContentReady()\"\n  >\n  </td-flavored-markdown-loader>\n\n  <td-flavored-markdown\n    *ngIf=\"showTdMarkdown\"\n    [content]=\"markdownString\"\n    [hostedUrl]=\"url\"\n    [anchor]=\"anchor\"\n    class=\"pad scroll-md\"\n    (contentReady)=\"handleContentReady()\"\n  >\n  </td-flavored-markdown>\n</ng-container>\n\n<div *ngIf=\"showEmptyState\" layout=\"column\" layout-align=\"center center\" class=\"tc-grey-500 mat-typography pad-lg\">\n  <mat-icon matListAvatar class=\"text-super push-bottom\">subject</mat-icon>\n  <h2>{{ emptyStateLabel }}</h2>\n</div>\n",
                 styles: [":host{display:block;position:relative;height:inherit}.scroll-md{position:absolute;top:40px;bottom:0;right:0;left:0;overflow-y:auto}.sticky{position:absolute;top:0}"]
             }] }
 ];
@@ -334,7 +334,7 @@ class HelpWindowComponent {
 HelpWindowComponent.decorators = [
     { type: Component, args: [{
                 selector: 'td-help-window',
-                template: "<div\n  *ngIf=\"draggable\"\n\n  cdkDrag\n  cdkDragRootElement=\".cdk-overlay-pane\"\n  cdkDragBoundary=\".cdk-overlay-container\"\n>\n  <td-help-window-toolbar\n    cdkDragHandle\n\n    class=\"td-draggable-help-window-toolbar\"\n\n    [labels]=\"labels\"\n\n    (closed)=\"closed.emit()\"\n  >\n</td-help-window-toolbar>\n\n  <td-help\n    [items]=\"items\"\n    [labels]=\"labels\"\n    [style.height.px]=\"height\"\n  >\n  </td-help>\n</div>\n\n\n<div\n  *ngIf=\"!draggable\"\n>\n  <td-help-window-toolbar\n    [labels]=\"labels\"\n\n    (closed)=\"closed.emit()\"\n  >\n</td-help-window-toolbar>\n\n  <td-help\n    [style.height.px]=\"height\"\n    [items]=\"items\"\n    [labels]=\"labels\"\n  >\n  </td-help>\n</div>\n",
+                template: "<div *ngIf=\"draggable\" cdkDrag cdkDragRootElement=\".cdk-overlay-pane\" cdkDragBoundary=\".cdk-overlay-container\">\n  <td-help-window-toolbar\n    cdkDragHandle\n    class=\"td-draggable-help-window-toolbar\"\n    [labels]=\"labels\"\n    (closed)=\"closed.emit()\"\n  >\n  </td-help-window-toolbar>\n\n  <td-help [items]=\"items\" [labels]=\"labels\" [style.height.px]=\"height\"> </td-help>\n</div>\n\n<div *ngIf=\"!draggable\">\n  <td-help-window-toolbar [labels]=\"labels\" (closed)=\"closed.emit()\"> </td-help-window-toolbar>\n\n  <td-help [style.height.px]=\"height\" [items]=\"items\" [labels]=\"labels\"> </td-help>\n</div>\n",
                 styles: [":host{display:inline-block}td-help{display:block;width:360px;max-width:100vw;max-height:100vh;overflow-y:auto}.td-draggable-help-window-toolbar{cursor:move}"]
             }] }
 ];
@@ -368,7 +368,7 @@ class DraggableHelpWindowDialogComponent {
 DraggableHelpWindowDialogComponent.decorators = [
     { type: Component, args: [{
                 selector: 'app-draggable-help-window-dialog',
-                template: "<td-help-window\n  [items]=\"data.items\"\n  [labels]=\"data.labels\"\n  [draggable]=\"true\"\n\n  (closed)=\"handleClosed()\"\n>\n</td-help-window>\n",
+                template: "<td-help-window [items]=\"data.items\" [labels]=\"data.labels\" [draggable]=\"true\" (closed)=\"handleClosed()\">\n</td-help-window>\n",
                 styles: ["::ng-deep.draggable-dialog-wrapper>.mat-dialog-container{padding:0}"]
             }] }
 ];
@@ -402,7 +402,7 @@ class HelpWindowToolbarComponent {
 HelpWindowToolbarComponent.decorators = [
     { type: Component, args: [{
                 selector: 'td-help-window-toolbar',
-                template: "<mat-toolbar\n  color=\"primary\"\n>\n  <mat-toolbar-row>\n    <div\n      layout=\"row\"\n      layout-align=\"start center\"\n      flex\n    >\n      <span\n        class=\"mat-title push-bottom-none\"\n        flex\n      >\n        {{ helpLabel }}\n      </span>\n      <!-- TODO: Resizing a drag-and-drop element was not working so removed minimize/maximize for now-->\n      <button\n        mat-icon-button\n        matTooltip=\"Close\"\n        (click)=\"closed.emit()\"\n      >\n        <mat-icon\n          [attr.aria-label]=\"closeLabel\"\n        >\n          close\n        </mat-icon>\n      </button>\n    </div>\n  </mat-toolbar-row>\n</mat-toolbar>\n",
+                template: "<mat-toolbar color=\"primary\">\n  <mat-toolbar-row>\n    <div layout=\"row\" layout-align=\"start center\" flex>\n      <span class=\"mat-title push-bottom-none\" flex>\n        {{ helpLabel }}\n      </span>\n      <!-- TODO: Resizing a drag-and-drop element was not working so removed minimize/maximize for now-->\n      <button mat-icon-button matTooltip=\"Close\" (click)=\"closed.emit()\">\n        <mat-icon [attr.aria-label]=\"closeLabel\">\n          close\n        </mat-icon>\n      </button>\n    </div>\n  </mat-toolbar-row>\n</mat-toolbar>\n",
                 styles: [""]
             }] }
 ];
@@ -432,17 +432,8 @@ CovalentHelpModule.decorators = [
                     MatToolbarModule,
                     CovalentFlavoredMarkdownModule,
                 ],
-                declarations: [
-                    HelpComponent,
-                    HelpWindowComponent,
-                    HelpWindowToolbarComponent,
-                    DraggableHelpWindowDialogComponent,
-                ],
-                exports: [
-                    HelpComponent,
-                    HelpWindowComponent,
-                    DraggableHelpWindowDialogComponent,
-                ],
+                declarations: [HelpComponent, HelpWindowComponent, HelpWindowToolbarComponent, DraggableHelpWindowDialogComponent],
+                exports: [HelpComponent, HelpWindowComponent, DraggableHelpWindowDialogComponent],
                 entryComponents: [DraggableHelpWindowDialogComponent],
             },] }
 ];

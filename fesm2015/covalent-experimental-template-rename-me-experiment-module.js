@@ -28,15 +28,9 @@ class CovalentRenameMeModule {
 }
 CovalentRenameMeModule.decorators = [
     { type: NgModule, args: [{
-                imports: [
-                    CommonModule,
-                ],
-                declarations: [
-                    TdRenameMeComponent,
-                ],
-                exports: [
-                    TdRenameMeComponent,
-                ],
+                imports: [CommonModule],
+                declarations: [TdRenameMeComponent],
+                exports: [TdRenameMeComponent],
             },] }
 ];
 

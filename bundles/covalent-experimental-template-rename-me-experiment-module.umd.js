@@ -33,15 +33,9 @@
         }
         CovalentRenameMeModule.decorators = [
             { type: core.NgModule, args: [{
-                        imports: [
-                            common.CommonModule,
-                        ],
-                        declarations: [
-                            TdRenameMeComponent,
-                        ],
-                        exports: [
-                            TdRenameMeComponent,
-                        ],
+                        imports: [common.CommonModule],
+                        declarations: [TdRenameMeComponent],
+                        exports: [TdRenameMeComponent],
                     },] }
         ];
         return CovalentRenameMeModule;

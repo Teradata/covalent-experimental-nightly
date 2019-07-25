@@ -30,15 +30,9 @@ var CovalentRenameMeModule = /** @class */ (function () {
     }
     CovalentRenameMeModule.decorators = [
         { type: NgModule, args: [{
-                    imports: [
-                        CommonModule,
-                    ],
-                    declarations: [
-                        TdRenameMeComponent,
-                    ],
-                    exports: [
-                        TdRenameMeComponent,
-                    ],
+                    imports: [CommonModule],
+                    declarations: [TdRenameMeComponent],
+                    exports: [TdRenameMeComponent],
                 },] }
     ];
     return CovalentRenameMeModule;

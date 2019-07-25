@@ -33,15 +33,9 @@ class CovalentRenameMeModule {
 }
 CovalentRenameMeModule.decorators = [
     { type: NgModule, args: [{
-                imports: [
-                    CommonModule,
-                ],
-                declarations: [
-                    TdRenameMeComponent,
-                ],
-                exports: [
-                    TdRenameMeComponent,
-                ],
+                imports: [CommonModule],
+                declarations: [TdRenameMeComponent],
+                exports: [TdRenameMeComponent],
             },] }
 ];
 
@@ -158,7 +152,13 @@ function addDependenciesAndFiles(options) {
             addPackageToPackageJson(host, '@angular/material', `~${materialVersion}`);
             addPackageToPackageJson(host, '@covalent/core', `~${covalentCoreVersion}`);
             /** @type {?} */
-            let components = [new DynamicForms(), new Http(), new Highlight(), new Markdown(), new FlavoredMarkdown()];
+            let components = [
+                new DynamicForms(),
+                new Http(),
+                new Highlight(),
+                new Markdown(),
+                new FlavoredMarkdown(),
+            ];
             components.forEach((component) => {
                 if (component.enabled(options)) {
                     addPackageToPackageJson(host, component.dependency(), `~${covalentCoreVersion}`);
@@ -200,7 +200,7 @@ function addThemeToAngularJson() {
         }
         else {
             /** @type {?} */
-            const existingStyles = targetOptions.styles.map((s) => typeof s === 'string' ? s : s.input);
+            const existingStyles = targetOptions.styles.map((s) => (typeof s === 'string' ? s : s.input));
             for (let [index, stylePath] of existingStyles.entries()) {
                 if (stylePath === assetPath) {
                     return;
