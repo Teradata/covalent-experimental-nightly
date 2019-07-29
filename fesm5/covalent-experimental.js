@@ -1,7 +1,7 @@
-import { CommonModule } from '@angular/common';
 import { Component, NgModule } from '@angular/core';
-import { __assign, __values, __read } from 'tslib';
-import { chain, mergeWith, url, apply, branchAndMerge, template } from '@angular-devkit/schematics';
+import { CommonModule } from '@angular/common';
+import { __values, __read, __assign } from 'tslib';
+import { chain, branchAndMerge, mergeWith, apply, url, template } from '@angular-devkit/schematics';
 import { addPackageToPackageJson } from '@angular/material/schematics/ng-add/package-config';
 import { strings } from '@angular-devkit/core';
 import { getProjectFromWorkspace, getProjectTargetOptions } from '@angular/cdk/schematics';
@@ -9,7 +9,7 @@ import { getWorkspace } from '@schematics/angular/utility/config';
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 var TdRenameMeComponent = /** @class */ (function () {
     function TdRenameMeComponent() {
@@ -29,7 +29,7 @@ var TdRenameMeComponent = /** @class */ (function () {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 var CovalentRenameMeModule = /** @class */ (function () {
     function CovalentRenameMeModule() {
@@ -46,17 +46,7 @@ var CovalentRenameMeModule = /** @class */ (function () {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /** @type {?} */
 var covalentCoreVersion = '2.0.0';
@@ -65,7 +55,7 @@ var materialVersion = '7.0.1';
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 var DynamicForms = /** @class */ (function () {
     function DynamicForms() {
@@ -195,7 +185,7 @@ var FlavoredMarkdown = /** @class */ (function () {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /**
  * @param {?} options
@@ -203,6 +193,10 @@ var FlavoredMarkdown = /** @class */ (function () {
  */
 function addDependenciesAndFiles(options) {
     return chain([
+        (/**
+         * @param {?} host
+         * @return {?}
+         */
         function (host) {
             addPackageToPackageJson(host, '@angular/material', "~" + materialVersion);
             addPackageToPackageJson(host, '@covalent/core', "~" + covalentCoreVersion);
@@ -214,12 +208,16 @@ function addDependenciesAndFiles(options) {
                 new Markdown(),
                 new FlavoredMarkdown(),
             ];
-            components.forEach(function (component) {
+            components.forEach((/**
+             * @param {?} component
+             * @return {?}
+             */
+            function (component) {
                 if (component.enabled(options)) {
                     addPackageToPackageJson(host, component.dependency(), "~" + covalentCoreVersion);
                 }
-            });
-        },
+            }));
+        }),
         mergeFiles(options),
         addThemeToAngularJson(),
     ]);
@@ -239,7 +237,11 @@ function mergeFiles(options) {
  * @return {?}
  */
 function addThemeToAngularJson() {
-    return function (host) {
+    return (/**
+     * @param {?} host
+     * @return {?}
+     */
+    function (host) {
         var e_1, _a;
         /** @type {?} */
         var workspace = getWorkspace(host);
@@ -256,7 +258,11 @@ function addThemeToAngularJson() {
         }
         else {
             /** @type {?} */
-            var existingStyles = targetOptions.styles.map(function (s) { return (typeof s === 'string' ? s : s.input); });
+            var existingStyles = targetOptions.styles.map((/**
+             * @param {?} s
+             * @return {?}
+             */
+            function (s) { return (typeof s === 'string' ? s : s.input); }));
             try {
                 for (var _b = __values(existingStyles.entries()), _c = _b.next(); !_c.done; _c = _b.next()) {
                     var _d = __read(_c.value, 2), index = _d[0], stylePath = _d[1];
@@ -279,24 +285,8 @@ function addThemeToAngularJson() {
         }
         host.overwrite('angular.json', JSON.stringify(workspace, undefined, 2));
         return host;
-    };
+    });
 }
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
- */
-
 export { CovalentRenameMeModule, TdRenameMeComponent, addDependenciesAndFiles };
-
 //# sourceMappingURL=covalent-experimental.js.map

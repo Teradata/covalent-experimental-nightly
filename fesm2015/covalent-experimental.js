@@ -1,6 +1,6 @@
-import { CommonModule } from '@angular/common';
 import { Component, NgModule } from '@angular/core';
-import { chain, mergeWith, url, apply, branchAndMerge, template } from '@angular-devkit/schematics';
+import { CommonModule } from '@angular/common';
+import { chain, branchAndMerge, mergeWith, apply, url, template } from '@angular-devkit/schematics';
 import { addPackageToPackageJson } from '@angular/material/schematics/ng-add/package-config';
 import { strings } from '@angular-devkit/core';
 import { getProjectFromWorkspace, getProjectTargetOptions } from '@angular/cdk/schematics';
@@ -8,7 +8,7 @@ import { getWorkspace } from '@schematics/angular/utility/config';
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 class TdRenameMeComponent {
     constructor() {
@@ -27,7 +27,7 @@ TdRenameMeComponent.ctorParameters = () => [];
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 class CovalentRenameMeModule {
 }
@@ -41,17 +41,7 @@ CovalentRenameMeModule.decorators = [
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /** @type {?} */
 const covalentCoreVersion = '2.0.0';
@@ -60,7 +50,7 @@ const materialVersion = '7.0.1';
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 class DynamicForms {
     /**
@@ -140,7 +130,7 @@ class FlavoredMarkdown {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /**
  * @param {?} options
@@ -148,6 +138,10 @@ class FlavoredMarkdown {
  */
 function addDependenciesAndFiles(options) {
     return chain([
+        (/**
+         * @param {?} host
+         * @return {?}
+         */
         (host) => {
             addPackageToPackageJson(host, '@angular/material', `~${materialVersion}`);
             addPackageToPackageJson(host, '@covalent/core', `~${covalentCoreVersion}`);
@@ -159,12 +153,16 @@ function addDependenciesAndFiles(options) {
                 new Markdown(),
                 new FlavoredMarkdown(),
             ];
-            components.forEach((component) => {
+            components.forEach((/**
+             * @param {?} component
+             * @return {?}
+             */
+            (component) => {
                 if (component.enabled(options)) {
                     addPackageToPackageJson(host, component.dependency(), `~${covalentCoreVersion}`);
                 }
-            });
-        },
+            }));
+        }),
         mergeFiles(options),
         addThemeToAngularJson(),
     ]);
@@ -184,7 +182,11 @@ function mergeFiles(options) {
  * @return {?}
  */
 function addThemeToAngularJson() {
-    return (host) => {
+    return (/**
+     * @param {?} host
+     * @return {?}
+     */
+    (host) => {
         /** @type {?} */
         const workspace = getWorkspace(host);
         /** @type {?} */
@@ -200,7 +202,11 @@ function addThemeToAngularJson() {
         }
         else {
             /** @type {?} */
-            const existingStyles = targetOptions.styles.map((s) => (typeof s === 'string' ? s : s.input));
+            const existingStyles = targetOptions.styles.map((/**
+             * @param {?} s
+             * @return {?}
+             */
+            (s) => (typeof s === 'string' ? s : s.input)));
             for (let [index, stylePath] of existingStyles.entries()) {
                 if (stylePath === assetPath) {
                     return;
@@ -213,24 +219,8 @@ function addThemeToAngularJson() {
         }
         host.overwrite('angular.json', JSON.stringify(workspace, undefined, 2));
         return host;
-    };
+    });
 }
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
- */
-
 export { CovalentRenameMeModule, TdRenameMeComponent, addDependenciesAndFiles };
-
 //# sourceMappingURL=covalent-experimental.js.map

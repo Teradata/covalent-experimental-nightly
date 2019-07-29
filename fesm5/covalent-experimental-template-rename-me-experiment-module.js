@@ -1,9 +1,9 @@
-import { CommonModule } from '@angular/common';
 import { Component, NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 var TdRenameMeComponent = /** @class */ (function () {
     function TdRenameMeComponent() {
@@ -23,7 +23,7 @@ var TdRenameMeComponent = /** @class */ (function () {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 var CovalentRenameMeModule = /** @class */ (function () {
     function CovalentRenameMeModule() {
@@ -38,21 +38,5 @@ var CovalentRenameMeModule = /** @class */ (function () {
     return CovalentRenameMeModule;
 }());
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
- */
-
 export { CovalentRenameMeModule, TdRenameMeComponent };
-
 //# sourceMappingURL=covalent-experimental-template-rename-me-experiment-module.js.map

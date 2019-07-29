@@ -1,6 +1,6 @@
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 export { CovalentRenameMeModule, TdRenameMeComponent } from './template-rename-me-experiment-module/index';
 export { addDependenciesAndFiles } from './schematics/src/ng-add/index';

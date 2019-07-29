@@ -1,12 +1,66 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/common'), require('@angular/core'), require('@angular-devkit/schematics'), require('@angular/material/schematics/ng-add/package-config'), require('@angular-devkit/core'), require('@angular/cdk/schematics'), require('@schematics/angular/utility/config')) :
-    typeof define === 'function' && define.amd ? define('@covalent/experimental', ['exports', '@angular/common', '@angular/core', '@angular-devkit/schematics', '@angular/material/schematics/ng-add/package-config', '@angular-devkit/core', '@angular/cdk/schematics', '@schematics/angular/utility/config'], factory) :
-    (factory((global.covalent = global.covalent || {}, global.covalent.experimental = {}),global.ng.common,global.ng.core,global.schematics,global.ng.material.schematics['ng-add']['package-config'],global.core$1,global.ng.cdk.schematics,global.config));
-}(this, (function (exports,common,core,schematics,packageConfig,core$1,schematics$1,config) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/common'), require('@angular-devkit/schematics'), require('@angular/material/schematics/ng-add/package-config'), require('@angular-devkit/core'), require('@angular/cdk/schematics'), require('@schematics/angular/utility/config')) :
+    typeof define === 'function' && define.amd ? define('@covalent/experimental', ['exports', '@angular/core', '@angular/common', '@angular-devkit/schematics', '@angular/material/schematics/ng-add/package-config', '@angular-devkit/core', '@angular/cdk/schematics', '@schematics/angular/utility/config'], factory) :
+    (global = global || self, factory((global.covalent = global.covalent || {}, global.covalent.experimental = {}), global.ng.core, global.ng.common, global.schematics, global.ng.material.schematics['ng-add']['package-config'], global.core$1, global.ng.cdk.schematics, global.config));
+}(this, function (exports, core, common, schematics, packageConfig, core$1, schematics$1, config) { 'use strict';
+
+    /*! *****************************************************************************
+    Copyright (c) Microsoft Corporation. All rights reserved.
+    Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+    this file except in compliance with the License. You may obtain a copy of the
+    License at http://www.apache.org/licenses/LICENSE-2.0
+
+    THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
+    WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
+    MERCHANTABLITY OR NON-INFRINGEMENT.
+
+    See the Apache Version 2.0 License for specific language governing permissions
+    and limitations under the License.
+    ***************************************************************************** */
+
+    var __assign = function() {
+        __assign = Object.assign || function __assign(t) {
+            for (var s, i = 1, n = arguments.length; i < n; i++) {
+                s = arguments[i];
+                for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+            }
+            return t;
+        };
+        return __assign.apply(this, arguments);
+    };
+
+    function __values(o) {
+        var m = typeof Symbol === "function" && o[Symbol.iterator], i = 0;
+        if (m) return m.call(o);
+        return {
+            next: function () {
+                if (o && i >= o.length) o = void 0;
+                return { value: o && o[i++], done: !o };
+            }
+        };
+    }
+
+    function __read(o, n) {
+        var m = typeof Symbol === "function" && o[Symbol.iterator];
+        if (!m) return o;
+        var i = m.call(o), r, ar = [], e;
+        try {
+            while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+        }
+        catch (error) { e = { error: error }; }
+        finally {
+            try {
+                if (r && !r.done && (m = i["return"])) m.call(i);
+            }
+            finally { if (e) throw e.error; }
+        }
+        return ar;
+    }
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var TdRenameMeComponent = /** @class */ (function () {
         function TdRenameMeComponent() {
@@ -26,7 +80,7 @@
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var CovalentRenameMeModule = /** @class */ (function () {
         function CovalentRenameMeModule() {
@@ -43,80 +97,7 @@
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
-     */
-
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
-     */
-
-    /*! *****************************************************************************
-    Copyright (c) Microsoft Corporation. All rights reserved.
-    Licensed under the Apache License, Version 2.0 (the "License"); you may not use
-    this file except in compliance with the License. You may obtain a copy of the
-    License at http://www.apache.org/licenses/LICENSE-2.0
-
-    THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-    KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
-    WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
-    MERCHANTABLITY OR NON-INFRINGEMENT.
-
-    See the Apache Version 2.0 License for specific language governing permissions
-    and limitations under the License.
-    ***************************************************************************** */
-    var __assign = function () {
-        __assign = Object.assign || function __assign(t) {
-            for (var s, i = 1, n = arguments.length; i < n; i++) {
-                s = arguments[i];
-                for (var p in s)
-                    if (Object.prototype.hasOwnProperty.call(s, p))
-                        t[p] = s[p];
-            }
-            return t;
-        };
-        return __assign.apply(this, arguments);
-    };
-    function __values(o) {
-        var m = typeof Symbol === "function" && o[Symbol.iterator], i = 0;
-        if (m)
-            return m.call(o);
-        return {
-            next: function () {
-                if (o && i >= o.length)
-                    o = void 0;
-                return { value: o && o[i++], done: !o };
-            }
-        };
-    }
-    function __read(o, n) {
-        var m = typeof Symbol === "function" && o[Symbol.iterator];
-        if (!m)
-            return o;
-        var i = m.call(o), r, ar = [], e;
-        try {
-            while ((n === void 0 || n-- > 0) && !(r = i.next()).done)
-                ar.push(r.value);
-        }
-        catch (error) {
-            e = { error: error };
-        }
-        finally {
-            try {
-                if (r && !r.done && (m = i["return"]))
-                    m.call(i);
-            }
-            finally {
-                if (e)
-                    throw e.error;
-            }
-        }
-        return ar;
-    }
-
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     /** @type {?} */
     var covalentCoreVersion = '2.0.0';
@@ -125,7 +106,7 @@
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var DynamicForms = /** @class */ (function () {
         function DynamicForms() {
@@ -138,18 +119,18 @@
          * @param {?} options
          * @return {?}
          */
-            function (options) {
-                return options.dynamicForms;
-            };
+        function (options) {
+            return options.dynamicForms;
+        };
         /**
          * @return {?}
          */
         DynamicForms.prototype.dependency = /**
          * @return {?}
          */
-            function () {
-                return '@covalent/dynamic-forms';
-            };
+        function () {
+            return '@covalent/dynamic-forms';
+        };
         return DynamicForms;
     }());
     var Http = /** @class */ (function () {
@@ -163,18 +144,18 @@
          * @param {?} options
          * @return {?}
          */
-            function (options) {
-                return options.http;
-            };
+        function (options) {
+            return options.http;
+        };
         /**
          * @return {?}
          */
         Http.prototype.dependency = /**
          * @return {?}
          */
-            function () {
-                return '@covalent/http';
-            };
+        function () {
+            return '@covalent/http';
+        };
         return Http;
     }());
     var Highlight = /** @class */ (function () {
@@ -188,18 +169,18 @@
          * @param {?} options
          * @return {?}
          */
-            function (options) {
-                return options.highlight;
-            };
+        function (options) {
+            return options.highlight;
+        };
         /**
          * @return {?}
          */
         Highlight.prototype.dependency = /**
          * @return {?}
          */
-            function () {
-                return '@covalent/highlight';
-            };
+        function () {
+            return '@covalent/highlight';
+        };
         return Highlight;
     }());
     var Markdown = /** @class */ (function () {
@@ -213,18 +194,18 @@
          * @param {?} options
          * @return {?}
          */
-            function (options) {
-                return options.markdown;
-            };
+        function (options) {
+            return options.markdown;
+        };
         /**
          * @return {?}
          */
         Markdown.prototype.dependency = /**
          * @return {?}
          */
-            function () {
-                return '@covalent/markdown';
-            };
+        function () {
+            return '@covalent/markdown';
+        };
         return Markdown;
     }());
     var FlavoredMarkdown = /** @class */ (function () {
@@ -238,24 +219,24 @@
          * @param {?} options
          * @return {?}
          */
-            function (options) {
-                return options.flavoredMarkdown;
-            };
+        function (options) {
+            return options.flavoredMarkdown;
+        };
         /**
          * @return {?}
          */
         FlavoredMarkdown.prototype.dependency = /**
          * @return {?}
          */
-            function () {
-                return '@covalent/flavored-markdown';
-            };
+        function () {
+            return '@covalent/flavored-markdown';
+        };
         return FlavoredMarkdown;
     }());
 
     /**
      * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     /**
      * @param {?} options
@@ -263,6 +244,10 @@
      */
     function addDependenciesAndFiles(options) {
         return schematics.chain([
+            (/**
+             * @param {?} host
+             * @return {?}
+             */
             function (host) {
                 packageConfig.addPackageToPackageJson(host, '@angular/material', "~" + materialVersion);
                 packageConfig.addPackageToPackageJson(host, '@covalent/core', "~" + covalentCoreVersion);
@@ -274,12 +259,16 @@
                     new Markdown(),
                     new FlavoredMarkdown(),
                 ];
-                components.forEach(function (component) {
+                components.forEach((/**
+                 * @param {?} component
+                 * @return {?}
+                 */
+                function (component) {
                     if (component.enabled(options)) {
                         packageConfig.addPackageToPackageJson(host, component.dependency(), "~" + covalentCoreVersion);
                     }
-                });
-            },
+                }));
+            }),
             mergeFiles(options),
             addThemeToAngularJson(),
         ]);
@@ -299,7 +288,11 @@
      * @return {?}
      */
     function addThemeToAngularJson() {
-        return function (host) {
+        return (/**
+         * @param {?} host
+         * @return {?}
+         */
+        function (host) {
             var e_1, _a;
             /** @type {?} */
             var workspace = config.getWorkspace(host);
@@ -316,7 +309,11 @@
             }
             else {
                 /** @type {?} */
-                var existingStyles = targetOptions.styles.map(function (s) { return (typeof s === 'string' ? s : s.input); });
+                var existingStyles = targetOptions.styles.map((/**
+                 * @param {?} s
+                 * @return {?}
+                 */
+                function (s) { return (typeof s === 'string' ? s : s.input); }));
                 try {
                     for (var _b = __values(existingStyles.entries()), _c = _b.next(); !_c.done; _c = _b.next()) {
                         var _d = __read(_c.value, 2), index = _d[0], stylePath = _d[1];
@@ -328,40 +325,19 @@
                         }
                     }
                 }
-                catch (e_1_1) {
-                    e_1 = { error: e_1_1 };
-                }
+                catch (e_1_1) { e_1 = { error: e_1_1 }; }
                 finally {
                     try {
-                        if (_c && !_c.done && (_a = _b.return))
-                            _a.call(_b);
+                        if (_c && !_c.done && (_a = _b.return)) _a.call(_b);
                     }
-                    finally {
-                        if (e_1)
-                            throw e_1.error;
-                    }
+                    finally { if (e_1) throw e_1.error; }
                 }
                 targetOptions.styles.unshift(assetPath);
             }
             host.overwrite('angular.json', JSON.stringify(workspace, undefined, 2));
             return host;
-        };
+        });
     }
-
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
-     */
-
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
-     */
-
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
-     */
 
     exports.CovalentRenameMeModule = CovalentRenameMeModule;
     exports.TdRenameMeComponent = TdRenameMeComponent;
@@ -369,6 +345,5 @@
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
-})));
-
+}));
 //# sourceMappingURL=covalent-experimental.umd.js.map

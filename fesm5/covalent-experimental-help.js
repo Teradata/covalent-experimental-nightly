@@ -1,5 +1,8 @@
+import { Component, ElementRef, Input, Output, EventEmitter, Inject, NgModule, Injectable, ɵɵdefineInjectable, ɵɵinject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { __spread, __awaiter, __generator, __assign } from 'tslib';
 import { removeLeadingHash, isAnchorLink, MarkdownLoaderService } from '@covalent/markdown';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatListModule } from '@angular/material/list';
@@ -8,14 +11,11 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { CovalentFlavoredMarkdownModule } from '@covalent/flavored-markdown';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { __assign, __spread, __awaiter, __generator } from 'tslib';
-import { Component, Input, ElementRef, Output, EventEmitter, Inject, NgModule, Injectable, defineInjectable, inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { Overlay } from '@angular/cdk/overlay';
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /**
  * @param {?} url
@@ -45,7 +45,11 @@ function getTitleFromUrl(url) {
 function getTitleFromMarkdownString(markdownString) {
     if (markdownString) {
         /** @type {?} */
-        var firstLine = markdownString.split(/[\r\n]+/).find(function (line) { return !!line; });
+        var firstLine = markdownString.split(/[\r\n]+/).find((/**
+         * @param {?} line
+         * @return {?}
+         */
+        function (line) { return !!line; }));
         return removeLeadingHash(firstLine).trim();
     }
     return undefined;
@@ -329,8 +333,16 @@ var HelpComponent = /** @class */ (function () {
         var _this = this;
         // TODO: rxjs fromEvent
         Array.from(this._elementRef.nativeElement.querySelectorAll('a[href]'))
-            .filter(function (link) { return isMarkdownHref(link); })
-            .forEach(function (link) { return link.addEventListener('click', _this.handleLinkClickBound); });
+            .filter((/**
+         * @param {?} link
+         * @return {?}
+         */
+        function (link) { return isMarkdownHref(link); }))
+            .forEach((/**
+         * @param {?} link
+         * @return {?}
+         */
+        function (link) { return link.addEventListener('click', _this.handleLinkClickBound); }));
     };
     /**
      * @return {?}
@@ -341,8 +353,16 @@ var HelpComponent = /** @class */ (function () {
     function () {
         var _this = this;
         Array.from(this._elementRef.nativeElement.querySelectorAll('a[href]'))
-            .filter(function (link) { return isMarkdownHref(link); })
-            .forEach(function (link) { return link.removeEventListener('click', _this.handleLinkClickBound); });
+            .filter((/**
+         * @param {?} link
+         * @return {?}
+         */
+        function (link) { return isMarkdownHref(link); }))
+            .forEach((/**
+         * @param {?} link
+         * @return {?}
+         */
+        function (link) { return link.removeEventListener('click', _this.handleLinkClickBound); }));
     };
     /**
      * @param {?} event
@@ -405,7 +425,7 @@ var HelpComponent = /** @class */ (function () {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 var HelpWindowComponent = /** @class */ (function () {
     function HelpWindowComponent() {
@@ -441,7 +461,7 @@ var HelpWindowComponent = /** @class */ (function () {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 var DraggableHelpWindowDialogComponent = /** @class */ (function () {
     function DraggableHelpWindowDialogComponent(data, dialogRef) {
@@ -474,7 +494,7 @@ var DraggableHelpWindowDialogComponent = /** @class */ (function () {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 var HelpWindowToolbarComponent = /** @class */ (function () {
     function HelpWindowToolbarComponent() {
@@ -516,7 +536,7 @@ var HelpWindowToolbarComponent = /** @class */ (function () {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 var CovalentHelpModule = /** @class */ (function () {
     function CovalentHelpModule() {
@@ -546,7 +566,7 @@ var CovalentHelpModule = /** @class */ (function () {
 
 /**
  * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 var DraggableHelpWindowDialogService = /** @class */ (function () {
     function DraggableHelpWindowDialogService(_dialog, overlay) {
@@ -581,30 +601,9 @@ var DraggableHelpWindowDialogService = /** @class */ (function () {
         { type: MatDialog },
         { type: Overlay }
     ]; };
-    /** @nocollapse */ DraggableHelpWindowDialogService.ngInjectableDef = defineInjectable({ factory: function DraggableHelpWindowDialogService_Factory() { return new DraggableHelpWindowDialogService(inject(MatDialog), inject(Overlay)); }, token: DraggableHelpWindowDialogService, providedIn: CovalentHelpModule });
+    /** @nocollapse */ DraggableHelpWindowDialogService.ngInjectableDef = ɵɵdefineInjectable({ factory: function DraggableHelpWindowDialogService_Factory() { return new DraggableHelpWindowDialogService(ɵɵinject(MatDialog), ɵɵinject(Overlay)); }, token: DraggableHelpWindowDialogService, providedIn: CovalentHelpModule });
     return DraggableHelpWindowDialogService;
 }());
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingReturn,uselessCode} checked by tsc
- */
-
-export { CovalentHelpModule, HelpComponent, HelpWindowComponent, DraggableHelpWindowDialogComponent, DraggableHelpWindowDialogService, HelpWindowToolbarComponent as ɵa };
-
+export { CovalentHelpModule, DraggableHelpWindowDialogComponent, DraggableHelpWindowDialogService, HelpComponent, HelpWindowComponent, HelpWindowToolbarComponent as ɵa };
 //# sourceMappingURL=covalent-experimental-help.js.map
