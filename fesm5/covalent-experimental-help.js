@@ -430,6 +430,7 @@ var HelpComponent = /** @class */ (function () {
 var HelpWindowComponent = /** @class */ (function () {
     function HelpWindowComponent() {
         this.draggable = false;
+        this.toolbarColor = 'primary';
         // outputs only for non-draggable toolbar
         this.closed = new EventEmitter();
     }
@@ -446,7 +447,7 @@ var HelpWindowComponent = /** @class */ (function () {
     HelpWindowComponent.decorators = [
         { type: Component, args: [{
                     selector: 'td-help-window',
-                    template: "<div *ngIf=\"draggable\" cdkDrag cdkDragRootElement=\".cdk-overlay-pane\" cdkDragBoundary=\".cdk-overlay-container\">\n  <td-help-window-toolbar\n    cdkDragHandle\n    class=\"td-draggable-help-window-toolbar\"\n    [labels]=\"labels\"\n    (closed)=\"closed.emit()\"\n  >\n  </td-help-window-toolbar>\n\n  <td-help [items]=\"items\" [labels]=\"labels\" [style.height.px]=\"height\"> </td-help>\n</div>\n\n<div *ngIf=\"!draggable\">\n  <td-help-window-toolbar [labels]=\"labels\" (closed)=\"closed.emit()\"> </td-help-window-toolbar>\n\n  <td-help [style.height.px]=\"height\" [items]=\"items\" [labels]=\"labels\"> </td-help>\n</div>\n",
+                    template: "<div *ngIf=\"draggable\" cdkDrag cdkDragRootElement=\".cdk-overlay-pane\" cdkDragBoundary=\".cdk-overlay-container\">\n  <td-help-window-toolbar\n    cdkDragHandle\n    class=\"td-draggable-help-window-toolbar\"\n    [labels]=\"labels\"\n    [toolbarColor]=\"toolbarColor\"\n    (closed)=\"closed.emit()\"\n  >\n  </td-help-window-toolbar>\n\n  <td-help [items]=\"items\" [labels]=\"labels\" [style.height.px]=\"height\"> </td-help>\n</div>\n\n<div *ngIf=\"!draggable\">\n  <td-help-window-toolbar [labels]=\"labels\" [toolbarColor]=\"toolbarColor\" (closed)=\"closed.emit()\">\n  </td-help-window-toolbar>\n\n  <td-help [style.height.px]=\"height\" [items]=\"items\" [labels]=\"labels\"> </td-help>\n</div>\n",
                     styles: [":host{display:inline-block}td-help{display:block;width:360px;max-width:100vw;max-height:100vh;overflow-y:auto}.td-draggable-help-window-toolbar{cursor:move}"]
                 }] }
     ];
@@ -454,6 +455,7 @@ var HelpWindowComponent = /** @class */ (function () {
         items: [{ type: Input }],
         draggable: [{ type: Input }],
         labels: [{ type: Input }],
+        toolbarColor: [{ type: Input }],
         closed: [{ type: Output }]
     };
     return HelpWindowComponent;
@@ -480,7 +482,7 @@ var DraggableHelpWindowDialogComponent = /** @class */ (function () {
     DraggableHelpWindowDialogComponent.decorators = [
         { type: Component, args: [{
                     selector: 'app-draggable-help-window-dialog',
-                    template: "<td-help-window [items]=\"data.items\" [labels]=\"data.labels\" [draggable]=\"true\" (closed)=\"handleClosed()\">\n</td-help-window>\n",
+                    template: "<td-help-window\n  [items]=\"data.items\"\n  [labels]=\"data.labels\"\n  [draggable]=\"true\"\n  [toolbarColor]=\"data.toolbarColor\"\n  (closed)=\"handleClosed()\"\n>\n</td-help-window>\n",
                     styles: ["::ng-deep.draggable-dialog-wrapper>.mat-dialog-container{padding:0}"]
                 }] }
     ];
@@ -498,6 +500,7 @@ var DraggableHelpWindowDialogComponent = /** @class */ (function () {
  */
 var HelpWindowToolbarComponent = /** @class */ (function () {
     function HelpWindowToolbarComponent() {
+        this.toolbarColor = 'primary';
         this.closed = new EventEmitter();
     }
     Object.defineProperty(HelpWindowToolbarComponent.prototype, "helpLabel", {
@@ -523,12 +526,13 @@ var HelpWindowToolbarComponent = /** @class */ (function () {
     HelpWindowToolbarComponent.decorators = [
         { type: Component, args: [{
                     selector: 'td-help-window-toolbar',
-                    template: "<mat-toolbar color=\"primary\">\n  <mat-toolbar-row>\n    <div layout=\"row\" layout-align=\"start center\" flex>\n      <span class=\"mat-title push-bottom-none\" flex>\n        {{ helpLabel }}\n      </span>\n      <!-- TODO: Resizing a drag-and-drop element was not working so removed minimize/maximize for now-->\n      <button mat-icon-button matTooltip=\"Close\" (click)=\"closed.emit()\">\n        <mat-icon [attr.aria-label]=\"closeLabel\">\n          close\n        </mat-icon>\n      </button>\n    </div>\n  </mat-toolbar-row>\n</mat-toolbar>\n",
+                    template: "<mat-toolbar [color]=\"toolbarColor\">\n  <mat-toolbar-row>\n    <div layout=\"row\" layout-align=\"start center\" flex>\n      <span class=\"mat-title push-bottom-none\" flex>\n        {{ helpLabel }}\n      </span>\n      <!-- TODO: Resizing a drag-and-drop element was not working so removed minimize/maximize for now-->\n      <button mat-icon-button matTooltip=\"Close\" (click)=\"closed.emit()\">\n        <mat-icon [attr.aria-label]=\"closeLabel\">\n          close\n        </mat-icon>\n      </button>\n    </div>\n  </mat-toolbar-row>\n</mat-toolbar>\n",
                     styles: [""]
                 }] }
     ];
     HelpWindowToolbarComponent.propDecorators = {
         labels: [{ type: Input }],
+        toolbarColor: [{ type: Input }],
         closed: [{ type: Output }]
     };
     return HelpWindowToolbarComponent;
@@ -574,21 +578,21 @@ var DraggableHelpWindowDialogService = /** @class */ (function () {
         this.scrollStrategy = overlay.scrollStrategies.noop();
     }
     /**
-     * @param {?} items
-     * @param {?=} config
-     * @param {?=} labels
+     * @param {?} config
      * @return {?}
      */
     DraggableHelpWindowDialogService.prototype.open = /**
-     * @param {?} items
-     * @param {?=} config
-     * @param {?=} labels
+     * @param {?} config
      * @return {?}
      */
-    function (items, config, labels) {
+    function (config) {
         /** @type {?} */
-        var draggableDialog = this._dialog.open(DraggableHelpWindowDialogComponent, __assign({ hasBackdrop: false, closeOnNavigation: true, panelClass: 'draggable-dialog-wrapper', position: { bottom: '0', right: '0' }, scrollStrategy: this.scrollStrategy }, config));
-        draggableDialog.componentInstance.data = { items: items, labels: labels };
+        var draggableDialog = this._dialog.open(DraggableHelpWindowDialogComponent, __assign({ hasBackdrop: false, closeOnNavigation: true, panelClass: 'draggable-dialog-wrapper', position: { bottom: '0', right: '0' }, scrollStrategy: this.scrollStrategy }, config.dialogConfig));
+        draggableDialog.componentInstance.data = {
+            items: config.items,
+            labels: config.labels,
+            toolbarColor: 'toolbarColor' in config ? config.toolbarColor : 'primary',
+        };
         return draggableDialog;
     };
     DraggableHelpWindowDialogService.decorators = [
