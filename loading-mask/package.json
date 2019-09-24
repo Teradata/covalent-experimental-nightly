@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/covalent-experimental-loading-mask.umd.js",
+  "module": "../fesm5/covalent-experimental-loading-mask.js",
+  "es2015": "../fesm2015/covalent-experimental-loading-mask.js",
+  "esm5": "../esm5/loading-mask/covalent-experimental-loading-mask.js",
+  "esm2015": "../esm2015/loading-mask/covalent-experimental-loading-mask.js",
+  "fesm5": "../fesm5/covalent-experimental-loading-mask.js",
+  "fesm2015": "../fesm2015/covalent-experimental-loading-mask.js",
+  "typings": "covalent-experimental-loading-mask.d.ts",
+  "metadata": "covalent-experimental-loading-mask.metadata.json",
+  "sideEffects": false,
+  "name": "@covalent/experimental/loading-mask"
+}
