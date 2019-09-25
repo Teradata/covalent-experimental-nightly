@@ -60,4 +60,16 @@ var FlavoredMarkdown = /** @class */ (function () {
     return FlavoredMarkdown;
 }());
 exports.FlavoredMarkdown = FlavoredMarkdown;
+var CodeEditor = /** @class */ (function () {
+    function CodeEditor() {
+    }
+    CodeEditor.prototype.enabled = function (options) {
+        return options.codeEditor;
+    };
+    CodeEditor.prototype.dependency = function () {
+        return '@covalent/code-editor';
+    };
+    return CodeEditor;
+}());
+exports.CodeEditor = CodeEditor;
 //# sourceMappingURL=components.js.map

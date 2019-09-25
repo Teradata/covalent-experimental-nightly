@@ -127,6 +127,21 @@ class FlavoredMarkdown {
         return '@covalent/flavored-markdown';
     }
 }
+class CodeEditor {
+    /**
+     * @param {?} options
+     * @return {?}
+     */
+    enabled(options) {
+        return options.codeEditor;
+    }
+    /**
+     * @return {?}
+     */
+    dependency() {
+        return '@covalent/code-editor';
+    }
+}
 
 /**
  * @fileoverview added by tsickle
@@ -152,6 +167,7 @@ function addDependenciesAndFiles(options) {
                 new Highlight(),
                 new Markdown(),
                 new FlavoredMarkdown(),
+                new CodeEditor(),
             ];
             components.forEach((/**
              * @param {?} component

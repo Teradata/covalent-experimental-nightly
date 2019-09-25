@@ -23,3 +23,7 @@ export declare class FlavoredMarkdown implements IComponent {
     enabled(options: ISchema): boolean;
     dependency(): string;
 }
+export declare class CodeEditor implements IComponent {
+    enabled(options: ISchema): boolean;
+    dependency(): string;
+}

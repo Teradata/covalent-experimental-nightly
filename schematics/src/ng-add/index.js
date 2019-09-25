@@ -19,6 +19,7 @@ function addDependenciesAndFiles(options) {
                 new components_1.Highlight(),
                 new components_1.Markdown(),
                 new components_1.FlavoredMarkdown(),
+                new components_1.CodeEditor(),
             ];
             components.forEach(function (component) {
                 if (component.enabled(options)) {

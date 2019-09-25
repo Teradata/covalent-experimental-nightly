@@ -182,6 +182,31 @@ var FlavoredMarkdown = /** @class */ (function () {
     };
     return FlavoredMarkdown;
 }());
+var CodeEditor = /** @class */ (function () {
+    function CodeEditor() {
+    }
+    /**
+     * @param {?} options
+     * @return {?}
+     */
+    CodeEditor.prototype.enabled = /**
+     * @param {?} options
+     * @return {?}
+     */
+    function (options) {
+        return options.codeEditor;
+    };
+    /**
+     * @return {?}
+     */
+    CodeEditor.prototype.dependency = /**
+     * @return {?}
+     */
+    function () {
+        return '@covalent/code-editor';
+    };
+    return CodeEditor;
+}());
 
 /**
  * @fileoverview added by tsickle
@@ -207,6 +232,7 @@ function addDependenciesAndFiles(options) {
                 new Highlight(),
                 new Markdown(),
                 new FlavoredMarkdown(),
+                new CodeEditor(),
             ];
             components.forEach((/**
              * @param {?} component
