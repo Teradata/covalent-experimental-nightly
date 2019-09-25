@@ -1,8 +1,9 @@
-import { MatDialog, MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
-import { DraggableHelpWindowDialogComponent } from './draggable-help-window-dialog.component';
+import { MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
 import { IHelpMenuDataItem, IHelpWindowComponentLabels } from '../help.utils';
-import { Overlay, NoopScrollStrategy } from '@angular/cdk/overlay';
+import { Overlay } from '@angular/cdk/overlay';
 import { ThemePalette } from '@angular/material/core';
+import { HelpWindowComponent } from '../help-window/help-window.component';
+import { TdDialogService } from '@covalent/core/dialogs';
 interface IDraggableHelpWindowDialogServiceConfig {
     items: IHelpMenuDataItem[];
     dialogConfig?: MatDialogConfig;
@@ -10,9 +11,9 @@ interface IDraggableHelpWindowDialogServiceConfig {
     toolbarColor?: ThemePalette;
 }
 export declare class DraggableHelpWindowDialogService {
-    private _dialog;
-    scrollStrategy: NoopScrollStrategy;
-    constructor(_dialog: MatDialog, overlay: Overlay);
-    open(config: IDraggableHelpWindowDialogServiceConfig): MatDialogRef<DraggableHelpWindowDialogComponent>;
+    private _overlay;
+    private _tdDialogService;
+    constructor(_overlay: Overlay, _tdDialogService: TdDialogService);
+    open(config: IDraggableHelpWindowDialogServiceConfig): MatDialogRef<HelpWindowComponent>;
 }
 export {};

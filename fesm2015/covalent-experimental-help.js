@@ -1,17 +1,18 @@
-import { Component, ElementRef, Input, EventEmitter, Output, Inject, NgModule, Injectable, ɵɵdefineInjectable, ɵɵinject } from '@angular/core';
+import { Component, ElementRef, Input, EventEmitter, Output, NgModule, Injectable, ɵɵdefineInjectable, ɵɵinject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { __awaiter } from 'tslib';
 import { removeLeadingHash, isAnchorLink, MarkdownLoaderService } from '@covalent/markdown';
-import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { CovalentFlavoredMarkdownModule } from '@covalent/flavored-markdown';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { Overlay } from '@angular/cdk/overlay';
+import { TdDialogService } from '@covalent/core/dialogs';
 
 /**
  * @fileoverview added by tsickle
@@ -355,8 +356,8 @@ class HelpWindowComponent {
 HelpWindowComponent.decorators = [
     { type: Component, args: [{
                 selector: 'td-help-window',
-                template: "<div *ngIf=\"draggable\" cdkDrag cdkDragRootElement=\".cdk-overlay-pane\" cdkDragBoundary=\".cdk-overlay-container\">\n  <td-help-window-toolbar\n    cdkDragHandle\n    class=\"td-draggable-help-window-toolbar\"\n    [labels]=\"labels\"\n    [toolbarColor]=\"toolbarColor\"\n    (closed)=\"closed.emit()\"\n  >\n  </td-help-window-toolbar>\n\n  <td-help [items]=\"items\" [labels]=\"labels\" [style.height.px]=\"height\"> </td-help>\n</div>\n\n<div *ngIf=\"!draggable\">\n  <td-help-window-toolbar [labels]=\"labels\" [toolbarColor]=\"toolbarColor\" (closed)=\"closed.emit()\">\n  </td-help-window-toolbar>\n\n  <td-help [style.height.px]=\"height\" [items]=\"items\" [labels]=\"labels\"> </td-help>\n</div>\n",
-                styles: [":host{display:inline-block}td-help{display:block;width:360px;max-width:100vw;max-height:100vh;overflow-y:auto}.td-draggable-help-window-toolbar{cursor:move}"]
+                template: "<div>\n  <td-help-window-toolbar\n    class=\"td-draggable-help-window-toolbar\"\n    [labels]=\"labels\"\n    [toolbarColor]=\"toolbarColor\"\n    (closed)=\"closed.emit()\"\n  >\n  </td-help-window-toolbar>\n\n  <td-help [items]=\"items\" [labels]=\"labels\" [style.height.px]=\"height\"> </td-help>\n</div>\n",
+                styles: [":host{display:inline-block}td-help{display:block;width:360px;max-width:100vw;max-height:100vh;overflow-y:auto}.td-draggable-help-window-toolbar{cursor:move}::ng-deep.draggable-dialog-wrapper>.mat-dialog-container{padding:0}"]
             }] }
 ];
 HelpWindowComponent.propDecorators = {
@@ -366,39 +367,6 @@ HelpWindowComponent.propDecorators = {
     toolbarColor: [{ type: Input }],
     closed: [{ type: Output }]
 };
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class DraggableHelpWindowDialogComponent {
-    /**
-     * @param {?} data
-     * @param {?} dialogRef
-     */
-    constructor(data, dialogRef) {
-        this.data = data;
-        this.dialogRef = dialogRef;
-    }
-    /**
-     * @return {?}
-     */
-    handleClosed() {
-        this.dialogRef.close();
-    }
-}
-DraggableHelpWindowDialogComponent.decorators = [
-    { type: Component, args: [{
-                selector: 'app-draggable-help-window-dialog',
-                template: "<td-help-window\n  [items]=\"data.items\"\n  [labels]=\"data.labels\"\n  [draggable]=\"true\"\n  [toolbarColor]=\"data.toolbarColor\"\n  (closed)=\"handleClosed()\"\n>\n</td-help-window>\n",
-                styles: ["::ng-deep.draggable-dialog-wrapper>.mat-dialog-container{padding:0}"]
-            }] }
-];
-/** @nocollapse */
-DraggableHelpWindowDialogComponent.ctorParameters = () => [
-    { type: undefined, decorators: [{ type: Inject, args: [MAT_DIALOG_DATA,] }] },
-    { type: MatDialogRef }
-];
 
 /**
  * @fileoverview added by tsickle
@@ -456,9 +424,9 @@ CovalentHelpModule.decorators = [
                     MatToolbarModule,
                     CovalentFlavoredMarkdownModule,
                 ],
-                declarations: [HelpComponent, HelpWindowComponent, HelpWindowToolbarComponent, DraggableHelpWindowDialogComponent],
-                exports: [HelpComponent, HelpWindowComponent, DraggableHelpWindowDialogComponent],
-                entryComponents: [DraggableHelpWindowDialogComponent],
+                declarations: [HelpComponent, HelpWindowComponent, HelpWindowToolbarComponent],
+                exports: [HelpComponent, HelpWindowComponent],
+                entryComponents: [HelpWindowComponent],
             },] }
 ];
 
@@ -468,12 +436,12 @@ CovalentHelpModule.decorators = [
  */
 class DraggableHelpWindowDialogService {
     /**
-     * @param {?} _dialog
-     * @param {?} overlay
+     * @param {?} _overlay
+     * @param {?} _tdDialogService
      */
-    constructor(_dialog, overlay) {
-        this._dialog = _dialog;
-        this.scrollStrategy = overlay.scrollStrategies.noop();
+    constructor(_overlay, _tdDialogService) {
+        this._overlay = _overlay;
+        this._tdDialogService = _tdDialogService;
     }
     /**
      * @param {?} config
@@ -481,12 +449,14 @@ class DraggableHelpWindowDialogService {
      */
     open(config) {
         /** @type {?} */
-        let draggableDialog = this._dialog.open(DraggableHelpWindowDialogComponent, Object.assign({ hasBackdrop: false, closeOnNavigation: true, panelClass: 'draggable-dialog-wrapper', position: { bottom: '0', right: '0' }, scrollStrategy: this.scrollStrategy }, config.dialogConfig));
-        draggableDialog.componentInstance.data = {
-            items: config.items,
-            labels: config.labels,
-            toolbarColor: 'toolbarColor' in config ? config.toolbarColor : 'primary',
-        };
+        const draggableDialog = this._tdDialogService.openDraggable(HelpWindowComponent, Object.assign({ hasBackdrop: false, closeOnNavigation: true, panelClass: 'draggable-dialog-wrapper', position: { bottom: '0', right: '0' }, scrollStrategy: this._overlay.scrollStrategies.noop() }, config.dialogConfig), ['.td-draggable-help-window-toolbar']);
+        draggableDialog.componentInstance.items = config.items;
+        draggableDialog.componentInstance.labels = config.labels;
+        draggableDialog.componentInstance.toolbarColor = 'toolbarColor' in config ? config.toolbarColor : 'primary';
+        draggableDialog.componentInstance.closed.subscribe((/**
+         * @return {?}
+         */
+        () => draggableDialog.close()));
         return draggableDialog;
     }
 }
@@ -497,10 +467,10 @@ DraggableHelpWindowDialogService.decorators = [
 ];
 /** @nocollapse */
 DraggableHelpWindowDialogService.ctorParameters = () => [
-    { type: MatDialog },
-    { type: Overlay }
+    { type: Overlay },
+    { type: TdDialogService }
 ];
-/** @nocollapse */ DraggableHelpWindowDialogService.ngInjectableDef = ɵɵdefineInjectable({ factory: function DraggableHelpWindowDialogService_Factory() { return new DraggableHelpWindowDialogService(ɵɵinject(MatDialog), ɵɵinject(Overlay)); }, token: DraggableHelpWindowDialogService, providedIn: CovalentHelpModule });
+/** @nocollapse */ DraggableHelpWindowDialogService.ngInjectableDef = ɵɵdefineInjectable({ factory: function DraggableHelpWindowDialogService_Factory() { return new DraggableHelpWindowDialogService(ɵɵinject(Overlay), ɵɵinject(TdDialogService)); }, token: DraggableHelpWindowDialogService, providedIn: CovalentHelpModule });
 
-export { CovalentHelpModule, DraggableHelpWindowDialogComponent, DraggableHelpWindowDialogService, HelpComponent, HelpWindowComponent, HelpWindowToolbarComponent as ɵa };
+export { CovalentHelpModule, DraggableHelpWindowDialogService, HelpComponent, HelpWindowComponent, HelpWindowToolbarComponent as ɵa };
 //# sourceMappingURL=covalent-experimental-help.js.map

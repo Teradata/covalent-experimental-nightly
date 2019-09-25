@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/common'), require('@covalent/markdown'), require('@angular/material/dialog'), require('@angular/material/button'), require('@angular/material/tooltip'), require('@angular/material/list'), require('@angular/material/icon'), require('@angular/material/progress-bar'), require('@covalent/flavored-markdown'), require('@angular/cdk/drag-drop'), require('@angular/material/toolbar'), require('@angular/cdk/overlay')) :
-    typeof define === 'function' && define.amd ? define('@covalent/experimental/help', ['exports', '@angular/core', '@angular/common', '@covalent/markdown', '@angular/material/dialog', '@angular/material/button', '@angular/material/tooltip', '@angular/material/list', '@angular/material/icon', '@angular/material/progress-bar', '@covalent/flavored-markdown', '@angular/cdk/drag-drop', '@angular/material/toolbar', '@angular/cdk/overlay'], factory) :
-    (global = global || self, factory((global.covalent = global.covalent || {}, global.covalent.experimental = global.covalent.experimental || {}, global.covalent.experimental.help = {}), global.ng.core, global.ng.common, global.markdown, global.ng.material.dialog, global.ng.material.button, global.ng.material.tooltip, global.ng.material.list, global.ng.material.icon, global.ng.material['progress-bar'], global.flavoredMarkdown, global.ng.cdk['drag-drop'], global.ng.material.toolbar, global.ng.cdk.overlay));
-}(this, function (exports, core, common, markdown, dialog, button, tooltip, list, icon, progressBar, flavoredMarkdown, dragDrop, toolbar, overlay) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/common'), require('@covalent/markdown'), require('@angular/material/button'), require('@angular/material/tooltip'), require('@angular/material/list'), require('@angular/material/icon'), require('@angular/material/dialog'), require('@angular/material/progress-bar'), require('@covalent/flavored-markdown'), require('@angular/cdk/drag-drop'), require('@angular/material/toolbar'), require('@angular/cdk/overlay'), require('@covalent/core/dialogs')) :
+    typeof define === 'function' && define.amd ? define('@covalent/experimental/help', ['exports', '@angular/core', '@angular/common', '@covalent/markdown', '@angular/material/button', '@angular/material/tooltip', '@angular/material/list', '@angular/material/icon', '@angular/material/dialog', '@angular/material/progress-bar', '@covalent/flavored-markdown', '@angular/cdk/drag-drop', '@angular/material/toolbar', '@angular/cdk/overlay', '@covalent/core/dialogs'], factory) :
+    (global = global || self, factory((global.covalent = global.covalent || {}, global.covalent.experimental = global.covalent.experimental || {}, global.covalent.experimental.help = {}), global.ng.core, global.ng.common, global.markdown, global.ng.material.button, global.ng.material.tooltip, global.ng.material.list, global.ng.material.icon, global.ng.material.dialog, global.ng.material['progress-bar'], global.flavoredMarkdown, global.ng.cdk['drag-drop'], global.ng.material.toolbar, global.ng.cdk.overlay, global.dialogs));
+}(this, function (exports, core, common, markdown, button, tooltip, list, icon, dialog, progressBar, flavoredMarkdown, dragDrop, toolbar, overlay, dialogs) { 'use strict';
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation. All rights reserved.
@@ -524,8 +524,8 @@
         HelpWindowComponent.decorators = [
             { type: core.Component, args: [{
                         selector: 'td-help-window',
-                        template: "<div *ngIf=\"draggable\" cdkDrag cdkDragRootElement=\".cdk-overlay-pane\" cdkDragBoundary=\".cdk-overlay-container\">\n  <td-help-window-toolbar\n    cdkDragHandle\n    class=\"td-draggable-help-window-toolbar\"\n    [labels]=\"labels\"\n    [toolbarColor]=\"toolbarColor\"\n    (closed)=\"closed.emit()\"\n  >\n  </td-help-window-toolbar>\n\n  <td-help [items]=\"items\" [labels]=\"labels\" [style.height.px]=\"height\"> </td-help>\n</div>\n\n<div *ngIf=\"!draggable\">\n  <td-help-window-toolbar [labels]=\"labels\" [toolbarColor]=\"toolbarColor\" (closed)=\"closed.emit()\">\n  </td-help-window-toolbar>\n\n  <td-help [style.height.px]=\"height\" [items]=\"items\" [labels]=\"labels\"> </td-help>\n</div>\n",
-                        styles: [":host{display:inline-block}td-help{display:block;width:360px;max-width:100vw;max-height:100vh;overflow-y:auto}.td-draggable-help-window-toolbar{cursor:move}"]
+                        template: "<div>\n  <td-help-window-toolbar\n    class=\"td-draggable-help-window-toolbar\"\n    [labels]=\"labels\"\n    [toolbarColor]=\"toolbarColor\"\n    (closed)=\"closed.emit()\"\n  >\n  </td-help-window-toolbar>\n\n  <td-help [items]=\"items\" [labels]=\"labels\" [style.height.px]=\"height\"> </td-help>\n</div>\n",
+                        styles: [":host{display:inline-block}td-help{display:block;width:360px;max-width:100vw;max-height:100vh;overflow-y:auto}.td-draggable-help-window-toolbar{cursor:move}::ng-deep.draggable-dialog-wrapper>.mat-dialog-container{padding:0}"]
                     }] }
         ];
         HelpWindowComponent.propDecorators = {
@@ -536,39 +536,6 @@
             closed: [{ type: core.Output }]
         };
         return HelpWindowComponent;
-    }());
-
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
-    var DraggableHelpWindowDialogComponent = /** @class */ (function () {
-        function DraggableHelpWindowDialogComponent(data, dialogRef) {
-            this.data = data;
-            this.dialogRef = dialogRef;
-        }
-        /**
-         * @return {?}
-         */
-        DraggableHelpWindowDialogComponent.prototype.handleClosed = /**
-         * @return {?}
-         */
-        function () {
-            this.dialogRef.close();
-        };
-        DraggableHelpWindowDialogComponent.decorators = [
-            { type: core.Component, args: [{
-                        selector: 'app-draggable-help-window-dialog',
-                        template: "<td-help-window\n  [items]=\"data.items\"\n  [labels]=\"data.labels\"\n  [draggable]=\"true\"\n  [toolbarColor]=\"data.toolbarColor\"\n  (closed)=\"handleClosed()\"\n>\n</td-help-window>\n",
-                        styles: ["::ng-deep.draggable-dialog-wrapper>.mat-dialog-container{padding:0}"]
-                    }] }
-        ];
-        /** @nocollapse */
-        DraggableHelpWindowDialogComponent.ctorParameters = function () { return [
-            { type: undefined, decorators: [{ type: core.Inject, args: [dialog.MAT_DIALOG_DATA,] }] },
-            { type: dialog.MatDialogRef }
-        ]; };
-        return DraggableHelpWindowDialogComponent;
     }());
 
     /**
@@ -637,9 +604,9 @@
                             toolbar.MatToolbarModule,
                             flavoredMarkdown.CovalentFlavoredMarkdownModule,
                         ],
-                        declarations: [HelpComponent, HelpWindowComponent, HelpWindowToolbarComponent, DraggableHelpWindowDialogComponent],
-                        exports: [HelpComponent, HelpWindowComponent, DraggableHelpWindowDialogComponent],
-                        entryComponents: [DraggableHelpWindowDialogComponent],
+                        declarations: [HelpComponent, HelpWindowComponent, HelpWindowToolbarComponent],
+                        exports: [HelpComponent, HelpWindowComponent],
+                        entryComponents: [HelpWindowComponent],
                     },] }
         ];
         return CovalentHelpModule;
@@ -650,9 +617,9 @@
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var DraggableHelpWindowDialogService = /** @class */ (function () {
-        function DraggableHelpWindowDialogService(_dialog, overlay) {
-            this._dialog = _dialog;
-            this.scrollStrategy = overlay.scrollStrategies.noop();
+        function DraggableHelpWindowDialogService(_overlay, _tdDialogService) {
+            this._overlay = _overlay;
+            this._tdDialogService = _tdDialogService;
         }
         /**
          * @param {?} config
@@ -664,12 +631,14 @@
          */
         function (config) {
             /** @type {?} */
-            var draggableDialog = this._dialog.open(DraggableHelpWindowDialogComponent, __assign({ hasBackdrop: false, closeOnNavigation: true, panelClass: 'draggable-dialog-wrapper', position: { bottom: '0', right: '0' }, scrollStrategy: this.scrollStrategy }, config.dialogConfig));
-            draggableDialog.componentInstance.data = {
-                items: config.items,
-                labels: config.labels,
-                toolbarColor: 'toolbarColor' in config ? config.toolbarColor : 'primary',
-            };
+            var draggableDialog = this._tdDialogService.openDraggable(HelpWindowComponent, __assign({ hasBackdrop: false, closeOnNavigation: true, panelClass: 'draggable-dialog-wrapper', position: { bottom: '0', right: '0' }, scrollStrategy: this._overlay.scrollStrategies.noop() }, config.dialogConfig), ['.td-draggable-help-window-toolbar']);
+            draggableDialog.componentInstance.items = config.items;
+            draggableDialog.componentInstance.labels = config.labels;
+            draggableDialog.componentInstance.toolbarColor = 'toolbarColor' in config ? config.toolbarColor : 'primary';
+            draggableDialog.componentInstance.closed.subscribe((/**
+             * @return {?}
+             */
+            function () { return draggableDialog.close(); }));
             return draggableDialog;
         };
         DraggableHelpWindowDialogService.decorators = [
@@ -679,15 +648,14 @@
         ];
         /** @nocollapse */
         DraggableHelpWindowDialogService.ctorParameters = function () { return [
-            { type: dialog.MatDialog },
-            { type: overlay.Overlay }
+            { type: overlay.Overlay },
+            { type: dialogs.TdDialogService }
         ]; };
-        /** @nocollapse */ DraggableHelpWindowDialogService.ngInjectableDef = core.ɵɵdefineInjectable({ factory: function DraggableHelpWindowDialogService_Factory() { return new DraggableHelpWindowDialogService(core.ɵɵinject(dialog.MatDialog), core.ɵɵinject(overlay.Overlay)); }, token: DraggableHelpWindowDialogService, providedIn: CovalentHelpModule });
+        /** @nocollapse */ DraggableHelpWindowDialogService.ngInjectableDef = core.ɵɵdefineInjectable({ factory: function DraggableHelpWindowDialogService_Factory() { return new DraggableHelpWindowDialogService(core.ɵɵinject(overlay.Overlay), core.ɵɵinject(dialogs.TdDialogService)); }, token: DraggableHelpWindowDialogService, providedIn: CovalentHelpModule });
         return DraggableHelpWindowDialogService;
     }());
 
     exports.CovalentHelpModule = CovalentHelpModule;
-    exports.DraggableHelpWindowDialogComponent = DraggableHelpWindowDialogComponent;
     exports.DraggableHelpWindowDialogService = DraggableHelpWindowDialogService;
     exports.HelpComponent = HelpComponent;
     exports.HelpWindowComponent = HelpWindowComponent;
