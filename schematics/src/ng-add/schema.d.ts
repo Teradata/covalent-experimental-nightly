@@ -9,6 +9,8 @@ export interface ISchema {
     markdown: boolean;
     /** Whether covalent flavored markdown should be set up. */
     flavoredMarkdown: boolean;
+    /** Whether covalent text-editor should be set up. */
+    textEditor: boolean;
     /** Whether covalent code editor should be set up. */
     codeEditor: boolean;
     /** Whether covalent utilities stylesheet should be added. */

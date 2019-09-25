@@ -60,6 +60,18 @@ var FlavoredMarkdown = /** @class */ (function () {
     return FlavoredMarkdown;
 }());
 exports.FlavoredMarkdown = FlavoredMarkdown;
+var TextEditor = /** @class */ (function () {
+    function TextEditor() {
+    }
+    TextEditor.prototype.enabled = function (options) {
+        return options.textEditor;
+    };
+    TextEditor.prototype.dependency = function () {
+        return '@covalent/text-editor';
+    };
+    return TextEditor;
+}());
+exports.TextEditor = TextEditor;
 var CodeEditor = /** @class */ (function () {
     function CodeEditor() {
     }

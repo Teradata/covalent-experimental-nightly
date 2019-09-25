@@ -182,6 +182,31 @@ var FlavoredMarkdown = /** @class */ (function () {
     };
     return FlavoredMarkdown;
 }());
+var TextEditor = /** @class */ (function () {
+    function TextEditor() {
+    }
+    /**
+     * @param {?} options
+     * @return {?}
+     */
+    TextEditor.prototype.enabled = /**
+     * @param {?} options
+     * @return {?}
+     */
+    function (options) {
+        return options.textEditor;
+    };
+    /**
+     * @return {?}
+     */
+    TextEditor.prototype.dependency = /**
+     * @return {?}
+     */
+    function () {
+        return '@covalent/text-editor';
+    };
+    return TextEditor;
+}());
 var CodeEditor = /** @class */ (function () {
     function CodeEditor() {
     }
@@ -232,6 +257,7 @@ function addDependenciesAndFiles(options) {
                 new Highlight(),
                 new Markdown(),
                 new FlavoredMarkdown(),
+                new TextEditor(),
                 new CodeEditor(),
             ];
             components.forEach((/**
