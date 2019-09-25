@@ -127,6 +127,21 @@ class FlavoredMarkdown {
         return '@covalent/flavored-markdown';
     }
 }
+class Echarts {
+    /**
+     * @param {?} options
+     * @return {?}
+     */
+    enabled(options) {
+        return options.echarts;
+    }
+    /**
+     * @return {?}
+     */
+    dependency() {
+        return '@covalent/echarts';
+    }
+}
 class TextEditor {
     /**
      * @param {?} options
@@ -182,6 +197,7 @@ function addDependenciesAndFiles(options) {
                 new Highlight(),
                 new Markdown(),
                 new FlavoredMarkdown(),
+                new Echarts(),
                 new TextEditor(),
                 new CodeEditor(),
             ];

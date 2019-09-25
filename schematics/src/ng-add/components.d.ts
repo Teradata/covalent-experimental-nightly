@@ -23,6 +23,10 @@ export declare class FlavoredMarkdown implements IComponent {
     enabled(options: ISchema): boolean;
     dependency(): string;
 }
+export declare class Echarts implements IComponent {
+    enabled(options: ISchema): boolean;
+    dependency(): string;
+}
 export declare class TextEditor implements IComponent {
     enabled(options: ISchema): boolean;
     dependency(): string;

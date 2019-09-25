@@ -60,6 +60,18 @@ var FlavoredMarkdown = /** @class */ (function () {
     return FlavoredMarkdown;
 }());
 exports.FlavoredMarkdown = FlavoredMarkdown;
+var Echarts = /** @class */ (function () {
+    function Echarts() {
+    }
+    Echarts.prototype.enabled = function (options) {
+        return options.echarts;
+    };
+    Echarts.prototype.dependency = function () {
+        return '@covalent/echarts';
+    };
+    return Echarts;
+}());
+exports.Echarts = Echarts;
 var TextEditor = /** @class */ (function () {
     function TextEditor() {
     }

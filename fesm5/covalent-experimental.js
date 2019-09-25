@@ -182,6 +182,31 @@ var FlavoredMarkdown = /** @class */ (function () {
     };
     return FlavoredMarkdown;
 }());
+var Echarts = /** @class */ (function () {
+    function Echarts() {
+    }
+    /**
+     * @param {?} options
+     * @return {?}
+     */
+    Echarts.prototype.enabled = /**
+     * @param {?} options
+     * @return {?}
+     */
+    function (options) {
+        return options.echarts;
+    };
+    /**
+     * @return {?}
+     */
+    Echarts.prototype.dependency = /**
+     * @return {?}
+     */
+    function () {
+        return '@covalent/echarts';
+    };
+    return Echarts;
+}());
 var TextEditor = /** @class */ (function () {
     function TextEditor() {
     }
@@ -257,6 +282,7 @@ function addDependenciesAndFiles(options) {
                 new Highlight(),
                 new Markdown(),
                 new FlavoredMarkdown(),
+                new Echarts(),
                 new TextEditor(),
                 new CodeEditor(),
             ];
