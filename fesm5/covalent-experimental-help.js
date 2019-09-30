@@ -1,18 +1,32 @@
-import { Component, ElementRef, Input, Output, EventEmitter, NgModule, Injectable, ɵɵdefineInjectable, ɵɵinject } from '@angular/core';
+import { Component, Input, HostListener, Output, EventEmitter, NgModule, Injectable, ɵɵdefineInjectable, ɵɵinject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { __spread, __awaiter, __generator, __assign } from 'tslib';
-import { removeLeadingHash, isAnchorLink, MarkdownLoaderService } from '@covalent/markdown';
+import { isAnchorLink, removeLeadingHash, MarkdownLoaderService } from '@covalent/markdown';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
-import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { CovalentFlavoredMarkdownModule } from '@covalent/flavored-markdown';
-import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { Overlay } from '@angular/cdk/overlay';
 import { TdDialogService } from '@covalent/core/dialogs';
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/** @type {?} */
+var DEFAULT_HELP_COMP_LABELS = {
+    goHome: 'Go home',
+    goBack: 'Go back',
+    emptyState: 'No item(s) to display',
+};
+/** @type {?} */
+var DEFAULT_HELP_WINDOW_COMP_LABELS = {
+    help: 'Help',
+    close: 'Close',
+};
 
 /**
  * @fileoverview added by tsickle
@@ -63,8 +77,7 @@ function isMarkdownHref(anchor) {
     return !isAnchorLink(anchor) && anchor.pathname.endsWith('.md');
 }
 var HelpComponent = /** @class */ (function () {
-    function HelpComponent(_elementRef, _markdownUrlLoaderService) {
-        this._elementRef = _elementRef;
+    function HelpComponent(_markdownUrlLoaderService) {
         this._markdownUrlLoaderService = _markdownUrlLoaderService;
         this.historyStack = []; // history
         // currently rendered
@@ -72,6 +85,21 @@ var HelpComponent = /** @class */ (function () {
         // current menu items
         this.loading = false;
     }
+    /**
+     * @param {?} event
+     * @return {?}
+     */
+    HelpComponent.prototype.clickListener = /**
+     * @param {?} event
+     * @return {?}
+     */
+    function (event) {
+        /** @type {?} */
+        var element = (/** @type {?} */ (event.srcElement));
+        if (element.matches('a[href]') && isMarkdownHref((/** @type {?} */ (element)))) {
+            this.handleLinkClick(event);
+        }
+    };
     Object.defineProperty(HelpComponent.prototype, "showGoBackButton", {
         get: /**
          * @return {?}
@@ -176,7 +204,7 @@ var HelpComponent = /** @class */ (function () {
          * @return {?}
          */
         function () {
-            return (this.labels && this.labels.goHome) || 'Go home';
+            return (this.labels && this.labels.goHome) || DEFAULT_HELP_COMP_LABELS.goHome;
         },
         enumerable: true,
         configurable: true
@@ -186,7 +214,7 @@ var HelpComponent = /** @class */ (function () {
          * @return {?}
          */
         function () {
-            return (this.labels && this.labels.goBack) || 'Go back';
+            return (this.labels && this.labels.goBack) || DEFAULT_HELP_COMP_LABELS.goBack;
         },
         enumerable: true,
         configurable: true
@@ -196,7 +224,7 @@ var HelpComponent = /** @class */ (function () {
          * @return {?}
          */
         function () {
-            return (this.labels && this.labels.emptyState) || 'No item(s) to display';
+            return (this.labels && this.labels.emptyState) || DEFAULT_HELP_COMP_LABELS.emptyState;
         },
         enumerable: true,
         configurable: true
@@ -217,20 +245,10 @@ var HelpComponent = /** @class */ (function () {
     /**
      * @return {?}
      */
-    HelpComponent.prototype.ngOnDestroy = /**
-     * @return {?}
-     */
-    function () {
-        this.removeLinkListeners();
-    };
-    /**
-     * @return {?}
-     */
     HelpComponent.prototype.reset = /**
      * @return {?}
      */
     function () {
-        this.removeLinkListeners();
         // if single item and no children
         if (this.items && this.items.length === 1 && (!this.items[0].children || this.items[0].children.length === 0)) {
             this.currentMenuItems = [];
@@ -314,58 +332,6 @@ var HelpComponent = /** @class */ (function () {
             getTitleFromMarkdownString(item.markdownString));
     };
     /**
-     * @return {?}
-     */
-    HelpComponent.prototype.handleContentReady = /**
-     * @return {?}
-     */
-    function () {
-        this.removeLinkListeners();
-        this.handleLinkClickBound = this.handleLinkClick.bind(this);
-        this.attachLinkListeners();
-    };
-    /**
-     * @return {?}
-     */
-    HelpComponent.prototype.attachLinkListeners = /**
-     * @return {?}
-     */
-    function () {
-        var _this = this;
-        // TODO: rxjs fromEvent
-        Array.from(this._elementRef.nativeElement.querySelectorAll('a[href]'))
-            .filter((/**
-         * @param {?} link
-         * @return {?}
-         */
-        function (link) { return isMarkdownHref(link); }))
-            .forEach((/**
-         * @param {?} link
-         * @return {?}
-         */
-        function (link) { return link.addEventListener('click', _this.handleLinkClickBound); }));
-    };
-    /**
-     * @return {?}
-     */
-    HelpComponent.prototype.removeLinkListeners = /**
-     * @return {?}
-     */
-    function () {
-        var _this = this;
-        Array.from(this._elementRef.nativeElement.querySelectorAll('a[href]'))
-            .filter((/**
-         * @param {?} link
-         * @return {?}
-         */
-        function (link) { return isMarkdownHref(link); }))
-            .forEach((/**
-         * @param {?} link
-         * @return {?}
-         */
-        function (link) { return link.removeEventListener('click', _this.handleLinkClickBound); }));
-    };
-    /**
      * @param {?} event
      * @return {?}
      */
@@ -408,18 +374,18 @@ var HelpComponent = /** @class */ (function () {
     HelpComponent.decorators = [
         { type: Component, args: [{
                     selector: 'td-help',
-                    template: "<ng-container *ngIf=\"!showEmptyState\">\n  <button mat-icon-button [matTooltip]=\"goHomeLabel\" (click)=\"reset()\">\n    <mat-icon [attr.aria-label]=\"goHomeLabel\">\n      home\n    </mat-icon>\n  </button>\n\n  <button *ngIf=\"showGoBackButton\" mat-icon-button [matTooltip]=\"goBackLabel\" (click)=\"goBack()\">\n    <mat-icon [attr.aria-label]=\"goBackLabel\">\n      arrow_back\n    </mat-icon>\n  </button>\n\n  <mat-action-list *ngIf=\"showMenu\">\n    <button\n      *ngFor=\"let item of currentMenuItems\"\n      (click)=\"handleItemSelected(item)\"\n      mat-list-item\n      [matTooltip]=\"getTitle(item)\"\n      matTooltipPosition=\"before\"\n      matTooltipShowDelay=\"500\"\n    >\n      <mat-icon matListIcon>\n        subject\n      </mat-icon>\n      <span class=\"text-truncate\">\n        {{ getTitle(item) }}\n      </span>\n    </button>\n  </mat-action-list>\n\n  <mat-progress-bar *ngIf=\"loading\" mode=\"indeterminate\" color=\"accent\" class=\"sticky\"> </mat-progress-bar>\n\n  <td-flavored-markdown-loader\n    *ngIf=\"showTdMarkdownLoader\"\n    [url]=\"url\"\n    [httpOptions]=\"httpOptions\"\n    [anchor]=\"anchor\"\n    class=\"pad scroll-md\"\n    (contentReady)=\"handleContentReady()\"\n  >\n  </td-flavored-markdown-loader>\n\n  <td-flavored-markdown\n    *ngIf=\"showTdMarkdown\"\n    [content]=\"markdownString\"\n    [hostedUrl]=\"url\"\n    [anchor]=\"anchor\"\n    class=\"pad scroll-md\"\n    (contentReady)=\"handleContentReady()\"\n  >\n  </td-flavored-markdown>\n</ng-container>\n\n<div *ngIf=\"showEmptyState\" layout=\"column\" layout-align=\"center center\" class=\"tc-grey-500 mat-typography pad-lg\">\n  <mat-icon matListAvatar class=\"text-super push-bottom\">subject</mat-icon>\n  <h2>{{ emptyStateLabel }}</h2>\n</div>\n",
+                    template: "<ng-container *ngIf=\"!showEmptyState\">\n  <button mat-icon-button [matTooltip]=\"goHomeLabel\" (click)=\"reset()\">\n    <mat-icon [attr.aria-label]=\"goHomeLabel\">\n      home\n    </mat-icon>\n  </button>\n\n  <button *ngIf=\"showGoBackButton\" mat-icon-button [matTooltip]=\"goBackLabel\" (click)=\"goBack()\">\n    <mat-icon [attr.aria-label]=\"goBackLabel\">\n      arrow_back\n    </mat-icon>\n  </button>\n\n  <mat-action-list *ngIf=\"showMenu\">\n    <button\n      *ngFor=\"let item of currentMenuItems\"\n      (click)=\"handleItemSelected(item)\"\n      mat-list-item\n      [matTooltip]=\"getTitle(item)\"\n      matTooltipPosition=\"before\"\n      matTooltipShowDelay=\"500\"\n    >\n      <mat-icon matListIcon>\n        subject\n      </mat-icon>\n      <span class=\"text-truncate\">\n        {{ getTitle(item) }}\n      </span>\n    </button>\n  </mat-action-list>\n\n  <mat-progress-bar *ngIf=\"loading\" mode=\"indeterminate\" color=\"accent\" class=\"sticky\"> </mat-progress-bar>\n\n  <td-flavored-markdown-loader\n    *ngIf=\"showTdMarkdownLoader\"\n    [url]=\"url\"\n    [httpOptions]=\"httpOptions\"\n    [anchor]=\"anchor\"\n    class=\"pad scroll-md\"\n  >\n  </td-flavored-markdown-loader>\n\n  <td-flavored-markdown\n    *ngIf=\"showTdMarkdown\"\n    [content]=\"markdownString\"\n    [hostedUrl]=\"url\"\n    [anchor]=\"anchor\"\n    class=\"pad scroll-md\"\n  >\n  </td-flavored-markdown>\n</ng-container>\n\n<div *ngIf=\"showEmptyState\" layout=\"column\" layout-align=\"center center\" class=\"tc-grey-500 mat-typography pad-lg\">\n  <mat-icon matListAvatar class=\"text-super push-bottom\">subject</mat-icon>\n  <h2>{{ emptyStateLabel }}</h2>\n</div>\n",
                     styles: [":host{display:block;position:relative;height:inherit}.scroll-md{position:absolute;top:40px;bottom:0;right:0;left:0;overflow-y:auto}.sticky{position:absolute;top:0}"]
                 }] }
     ];
     /** @nocollapse */
     HelpComponent.ctorParameters = function () { return [
-        { type: ElementRef },
         { type: MarkdownLoaderService }
     ]; };
     HelpComponent.propDecorators = {
         items: [{ type: Input }],
-        labels: [{ type: Input }]
+        labels: [{ type: Input }],
+        clickListener: [{ type: HostListener, args: ['click', ['$event'],] }]
     };
     return HelpComponent;
 }());
@@ -430,17 +396,42 @@ var HelpComponent = /** @class */ (function () {
  */
 var HelpWindowComponent = /** @class */ (function () {
     function HelpWindowComponent() {
-        this.draggable = false;
         this.toolbarColor = 'primary';
-        // outputs only for non-draggable toolbar
         this.closed = new EventEmitter();
     }
-    Object.defineProperty(HelpWindowComponent.prototype, "height", {
+    Object.defineProperty(HelpWindowComponent.prototype, "helpComponentLabels", {
         get: /**
          * @return {?}
          */
         function () {
-            return 475;
+            if (this.labels) {
+                var _a = this.labels, goHome = _a.goHome, goBack = _a.goBack, emptyState = _a.emptyState;
+                return {
+                    goHome: goHome,
+                    goBack: goBack,
+                    emptyState: emptyState,
+                };
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(HelpWindowComponent.prototype, "helpLabel", {
+        get: /**
+         * @return {?}
+         */
+        function () {
+            return (this.labels && this.labels.help) || DEFAULT_HELP_WINDOW_COMP_LABELS.help;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(HelpWindowComponent.prototype, "closeLabel", {
+        get: /**
+         * @return {?}
+         */
+        function () {
+            return (this.labels && this.labels.close) || DEFAULT_HELP_WINDOW_COMP_LABELS.close;
         },
         enumerable: true,
         configurable: true
@@ -448,62 +439,17 @@ var HelpWindowComponent = /** @class */ (function () {
     HelpWindowComponent.decorators = [
         { type: Component, args: [{
                     selector: 'td-help-window',
-                    template: "<div>\n  <td-help-window-toolbar\n    class=\"td-draggable-help-window-toolbar\"\n    [labels]=\"labels\"\n    [toolbarColor]=\"toolbarColor\"\n    (closed)=\"closed.emit()\"\n  >\n  </td-help-window-toolbar>\n\n  <td-help [items]=\"items\" [labels]=\"labels\" [style.height.px]=\"height\"> </td-help>\n</div>\n",
-                    styles: [":host{display:inline-block}td-help{display:block;width:360px;max-width:100vw;max-height:100vh;overflow-y:auto}.td-draggable-help-window-toolbar{cursor:move}::ng-deep.draggable-dialog-wrapper>.mat-dialog-container{padding:0}"]
+                    template: "<mat-toolbar [color]=\"toolbarColor\" class=\"td-help-window-toolbar\">\n  <mat-toolbar-row>\n    <div layout=\"row\" layout-align=\"start center\" flex>\n      <span class=\"mat-title push-bottom-none\" flex>\n        {{ helpLabel }}\n      </span>\n      <!-- TODO: Resizing a drag-and-drop element was not working so removed minimize/maximize for now-->\n      <button mat-icon-button matTooltip=\"Close\" (click)=\"closed.emit()\" class=\"td-help-window-close\">\n        <mat-icon [attr.aria-label]=\"closeLabel\">\n          close\n        </mat-icon>\n      </button>\n    </div>\n  </mat-toolbar-row>\n</mat-toolbar>\n\n<td-help [items]=\"items\" [labels]=\"helpComponentLabels\"> </td-help>\n",
+                    styles: [":host{height:100%;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column}:host.td-draggable-help-window .td-help-window-toolbar{cursor:move}::ng-deep .td-draggable-help-window-wrapper>.mat-dialog-container{padding:0}"]
                 }] }
     ];
     HelpWindowComponent.propDecorators = {
         items: [{ type: Input }],
-        draggable: [{ type: Input }],
         labels: [{ type: Input }],
         toolbarColor: [{ type: Input }],
         closed: [{ type: Output }]
     };
     return HelpWindowComponent;
-}());
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-var HelpWindowToolbarComponent = /** @class */ (function () {
-    function HelpWindowToolbarComponent() {
-        this.toolbarColor = 'primary';
-        this.closed = new EventEmitter();
-    }
-    Object.defineProperty(HelpWindowToolbarComponent.prototype, "helpLabel", {
-        get: /**
-         * @return {?}
-         */
-        function () {
-            return (this.labels && this.labels.help) || 'Help';
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(HelpWindowToolbarComponent.prototype, "closeLabel", {
-        get: /**
-         * @return {?}
-         */
-        function () {
-            return (this.labels && this.labels.close) || 'Close';
-        },
-        enumerable: true,
-        configurable: true
-    });
-    HelpWindowToolbarComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'td-help-window-toolbar',
-                    template: "<mat-toolbar [color]=\"toolbarColor\">\n  <mat-toolbar-row>\n    <div layout=\"row\" layout-align=\"start center\" flex>\n      <span class=\"mat-title push-bottom-none\" flex>\n        {{ helpLabel }}\n      </span>\n      <!-- TODO: Resizing a drag-and-drop element was not working so removed minimize/maximize for now-->\n      <button mat-icon-button matTooltip=\"Close\" (click)=\"closed.emit()\">\n        <mat-icon [attr.aria-label]=\"closeLabel\">\n          close\n        </mat-icon>\n      </button>\n    </div>\n  </mat-toolbar-row>\n</mat-toolbar>\n",
-                    styles: [""]
-                }] }
-    ];
-    HelpWindowToolbarComponent.propDecorators = {
-        labels: [{ type: Input }],
-        toolbarColor: [{ type: Input }],
-        closed: [{ type: Output }]
-    };
-    return HelpWindowToolbarComponent;
 }());
 
 /**
@@ -522,13 +468,11 @@ var CovalentHelpModule = /** @class */ (function () {
                         MatTooltipModule,
                         MatListModule,
                         MatIconModule,
-                        MatDialogModule,
                         MatProgressBarModule,
-                        DragDropModule,
                         MatToolbarModule,
                         CovalentFlavoredMarkdownModule,
                     ],
-                    declarations: [HelpComponent, HelpWindowComponent, HelpWindowToolbarComponent],
+                    declarations: [HelpComponent, HelpWindowComponent],
                     exports: [HelpComponent, HelpWindowComponent],
                     entryComponents: [HelpWindowComponent],
                 },] }
@@ -555,7 +499,14 @@ var DraggableHelpWindowDialogService = /** @class */ (function () {
      */
     function (config) {
         /** @type {?} */
-        var draggableDialog = this._tdDialogService.openDraggable(HelpWindowComponent, __assign({ hasBackdrop: false, closeOnNavigation: true, panelClass: 'draggable-dialog-wrapper', position: { bottom: '0', right: '0' }, scrollStrategy: this._overlay.scrollStrategies.noop() }, config.dialogConfig), ['.td-draggable-help-window-toolbar']);
+        var CDK_OVERLAY_CUSTOM_CLASS = 'td-draggable-help-window-wrapper';
+        /** @type {?} */
+        var draggableDialog = this._tdDialogService.openDraggable({
+            component: HelpWindowComponent,
+            config: __assign({ hasBackdrop: false, closeOnNavigation: true, panelClass: CDK_OVERLAY_CUSTOM_CLASS, position: { bottom: '0', right: '0' }, scrollStrategy: this._overlay.scrollStrategies.noop(), height: '475px', width: '360px' }, config.dialogConfig),
+            dragHandleSelectors: ['.td-help-window-toolbar'],
+            draggableClass: 'td-draggable-help-window',
+        });
         draggableDialog.componentInstance.items = config.items;
         draggableDialog.componentInstance.labels = config.labels;
         draggableDialog.componentInstance.toolbarColor = 'toolbarColor' in config ? config.toolbarColor : 'primary';
@@ -579,5 +530,5 @@ var DraggableHelpWindowDialogService = /** @class */ (function () {
     return DraggableHelpWindowDialogService;
 }());
 
-export { CovalentHelpModule, DraggableHelpWindowDialogService, HelpComponent, HelpWindowComponent, HelpWindowToolbarComponent as ɵa };
+export { CovalentHelpModule, DEFAULT_HELP_COMP_LABELS, DEFAULT_HELP_WINDOW_COMP_LABELS, DraggableHelpWindowDialogService, HelpComponent, HelpWindowComponent };
 //# sourceMappingURL=covalent-experimental-help.js.map
