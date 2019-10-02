@@ -9,8 +9,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { CovalentFlavoredMarkdownModule } from '@covalent/flavored-markdown';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { CovalentDialogsModule, TdDialogService } from '@covalent/core/dialogs';
 import { Overlay } from '@angular/cdk/overlay';
-import { TdDialogService } from '@covalent/core/dialogs';
 
 /**
  * @fileoverview added by tsickle
@@ -471,6 +471,7 @@ var CovalentHelpModule = /** @class */ (function () {
                         MatProgressBarModule,
                         MatToolbarModule,
                         CovalentFlavoredMarkdownModule,
+                        CovalentDialogsModule,
                     ],
                     declarations: [HelpComponent, HelpWindowComponent],
                     exports: [HelpComponent, HelpWindowComponent],
@@ -501,9 +502,19 @@ var DraggableHelpWindowDialogService = /** @class */ (function () {
         /** @type {?} */
         var CDK_OVERLAY_CUSTOM_CLASS = 'td-draggable-help-window-wrapper';
         /** @type {?} */
+        var DEFAULT_DRAGGABLE_DIALOG_CONFIG = {
+            hasBackdrop: false,
+            closeOnNavigation: true,
+            panelClass: CDK_OVERLAY_CUSTOM_CLASS,
+            position: { bottom: '0', right: '0' },
+            height: '475px',
+            width: '360px',
+            scrollStrategy: this._overlay.scrollStrategies.noop(),
+        };
+        /** @type {?} */
         var draggableDialog = this._tdDialogService.openDraggable({
             component: HelpWindowComponent,
-            config: __assign({ hasBackdrop: false, closeOnNavigation: true, panelClass: CDK_OVERLAY_CUSTOM_CLASS, position: { bottom: '0', right: '0' }, scrollStrategy: this._overlay.scrollStrategies.noop(), height: '475px', width: '360px' }, config.dialogConfig),
+            config: __assign({}, DEFAULT_DRAGGABLE_DIALOG_CONFIG, config.dialogConfig),
             dragHandleSelectors: ['.td-help-window-toolbar'],
             draggableClass: 'td-draggable-help-window',
         });

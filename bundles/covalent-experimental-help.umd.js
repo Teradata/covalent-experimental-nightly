@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/common'), require('@covalent/markdown'), require('@angular/material/button'), require('@angular/material/tooltip'), require('@angular/material/list'), require('@angular/material/icon'), require('@angular/material/progress-bar'), require('@covalent/flavored-markdown'), require('@angular/material/toolbar'), require('@angular/cdk/overlay'), require('@covalent/core/dialogs')) :
-    typeof define === 'function' && define.amd ? define('@covalent/experimental/help', ['exports', '@angular/core', '@angular/common', '@covalent/markdown', '@angular/material/button', '@angular/material/tooltip', '@angular/material/list', '@angular/material/icon', '@angular/material/progress-bar', '@covalent/flavored-markdown', '@angular/material/toolbar', '@angular/cdk/overlay', '@covalent/core/dialogs'], factory) :
-    (global = global || self, factory((global.covalent = global.covalent || {}, global.covalent.experimental = global.covalent.experimental || {}, global.covalent.experimental.help = {}), global.ng.core, global.ng.common, global.markdown, global.ng.material.button, global.ng.material.tooltip, global.ng.material.list, global.ng.material.icon, global.ng.material['progress-bar'], global.flavoredMarkdown, global.ng.material.toolbar, global.ng.cdk.overlay, global.dialogs));
-}(this, function (exports, core, common, markdown, button, tooltip, list, icon, progressBar, flavoredMarkdown, toolbar, overlay, dialogs) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/common'), require('@covalent/markdown'), require('@angular/material/button'), require('@angular/material/tooltip'), require('@angular/material/list'), require('@angular/material/icon'), require('@angular/material/progress-bar'), require('@covalent/flavored-markdown'), require('@angular/material/toolbar'), require('@covalent/core/dialogs'), require('@angular/cdk/overlay')) :
+    typeof define === 'function' && define.amd ? define('@covalent/experimental/help', ['exports', '@angular/core', '@angular/common', '@covalent/markdown', '@angular/material/button', '@angular/material/tooltip', '@angular/material/list', '@angular/material/icon', '@angular/material/progress-bar', '@covalent/flavored-markdown', '@angular/material/toolbar', '@covalent/core/dialogs', '@angular/cdk/overlay'], factory) :
+    (global = global || self, factory((global.covalent = global.covalent || {}, global.covalent.experimental = global.covalent.experimental || {}, global.covalent.experimental.help = {}), global.ng.core, global.ng.common, global.markdown, global.ng.material.button, global.ng.material.tooltip, global.ng.material.list, global.ng.material.icon, global.ng.material['progress-bar'], global.flavoredMarkdown, global.ng.material.toolbar, global.dialogs, global.ng.cdk.overlay));
+}(this, function (exports, core, common, markdown, button, tooltip, list, icon, progressBar, flavoredMarkdown, toolbar, dialogs, overlay) { 'use strict';
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation. All rights reserved.
@@ -549,6 +549,7 @@
                             progressBar.MatProgressBarModule,
                             toolbar.MatToolbarModule,
                             flavoredMarkdown.CovalentFlavoredMarkdownModule,
+                            dialogs.CovalentDialogsModule,
                         ],
                         declarations: [HelpComponent, HelpWindowComponent],
                         exports: [HelpComponent, HelpWindowComponent],
@@ -579,9 +580,19 @@
             /** @type {?} */
             var CDK_OVERLAY_CUSTOM_CLASS = 'td-draggable-help-window-wrapper';
             /** @type {?} */
+            var DEFAULT_DRAGGABLE_DIALOG_CONFIG = {
+                hasBackdrop: false,
+                closeOnNavigation: true,
+                panelClass: CDK_OVERLAY_CUSTOM_CLASS,
+                position: { bottom: '0', right: '0' },
+                height: '475px',
+                width: '360px',
+                scrollStrategy: this._overlay.scrollStrategies.noop(),
+            };
+            /** @type {?} */
             var draggableDialog = this._tdDialogService.openDraggable({
                 component: HelpWindowComponent,
-                config: __assign({ hasBackdrop: false, closeOnNavigation: true, panelClass: CDK_OVERLAY_CUSTOM_CLASS, position: { bottom: '0', right: '0' }, scrollStrategy: this._overlay.scrollStrategies.noop(), height: '475px', width: '360px' }, config.dialogConfig),
+                config: __assign({}, DEFAULT_DRAGGABLE_DIALOG_CONFIG, config.dialogConfig),
                 dragHandleSelectors: ['.td-help-window-toolbar'],
                 draggableClass: 'td-draggable-help-window',
             });
