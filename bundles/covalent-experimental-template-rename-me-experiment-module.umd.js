@@ -15,7 +15,7 @@
         TdRenameMeComponent.decorators = [
             { type: core.Component, args: [{
                         selector: 'td-renameMe',
-                        template: "<a href=\"https://github.com/Teradata/covalent\"> Test Link </a>\n",
+                        template: "<a href=\"https://github.com/Teradata/covalent\">Test Link</a>\n",
                         styles: [""]
                     }] }
         ];

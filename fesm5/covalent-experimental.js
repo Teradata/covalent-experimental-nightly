@@ -12,7 +12,7 @@ var TdRenameMeComponent = /** @class */ (function () {
     TdRenameMeComponent.decorators = [
         { type: Component, args: [{
                     selector: 'td-renameMe',
-                    template: "<a href=\"https://github.com/Teradata/covalent\"> Test Link </a>\n",
+                    template: "<a href=\"https://github.com/Teradata/covalent\">Test Link</a>\n",
                     styles: [""]
                 }] }
     ];
