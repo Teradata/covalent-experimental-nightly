@@ -2,7 +2,7 @@
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/common')) :
     typeof define === 'function' && define.amd ? define('@covalent/experimental/template-rename-me-experiment-module', ['exports', '@angular/core', '@angular/common'], factory) :
     (global = global || self, factory((global.covalent = global.covalent || {}, global.covalent.experimental = global.covalent.experimental || {}, global.covalent.experimental['template-rename-me-experiment-module'] = {}), global.ng.core, global.ng.common));
-}(this, function (exports, core, common) { 'use strict';
+}(this, (function (exports, core, common) { 'use strict';
 
     /**
      * @fileoverview added by tsickle
@@ -46,5 +46,5 @@
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
-}));
+})));
 //# sourceMappingURL=covalent-experimental-template-rename-me-experiment-module.umd.js.map
