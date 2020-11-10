@@ -1,7 +1,0 @@
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-export { CovalentRenameMeModule } from './rename-me.module';
-export { TdRenameMeComponent } from './rename-me.component';
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLWFwaS5qcyIsInNvdXJjZVJvb3QiOiJuZzovL0Bjb3ZhbGVudC9leHBlcmltZW50YWwvdGVtcGxhdGUtcmVuYW1lLW1lLWV4cGVyaW1lbnQtbW9kdWxlLyIsInNvdXJjZXMiOlsicHVibGljLWFwaS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7O0FBQUEsdUNBQWMsb0JBQW9CLENBQUM7QUFDbkMsb0NBQWMsdUJBQXVCLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgKiBmcm9tICcuL3JlbmFtZS1tZS5tb2R1bGUnO1xuZXhwb3J0ICogZnJvbSAnLi9yZW5hbWUtbWUuY29tcG9uZW50JztcbiJdfQ==
