@@ -1,7 +1,7 @@
 {
   "name": "@covalent/experimental",
   "description": "Teradata UI Platform Experimental Module",
-  "version": "3.1.0",
+  "version": "3.1.1-beta.1",
   "license": "MIT",
   "author": "Teradata UX",
   "contributors": [
