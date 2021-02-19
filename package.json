@@ -17,10 +17,10 @@
     "schematics"
   ],
   "peerDependencies": {
-    "@angular/common": "^9.0.0 || ^10.0.0-0",
-    "@angular/core": "^9.0.0 || ^10.0.0-0",
-    "@angular/cdk": "^9.0.0 || ^10.0.0-0",
-    "@angular/material": "^9.0.0 || ^10.0.0-0"
+    "@angular/common": "^9.0.0 || ^10.0.0-0 || ^11.0.0-0",
+    "@angular/core": "^9.0.0 || ^10.0.0-0 || ^11.0.0-0",
+    "@angular/cdk": "^9.0.0 || ^10.0.0-0 || ^11.0.0-0",
+    "@angular/material": "^9.0.0 || ^10.0.0-0 || ^11.0.0-0"
   },
   "main": "bundles/covalent-experimental.umd.js",
   "module": "fesm2015/covalent-experimental.js",
